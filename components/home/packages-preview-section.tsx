@@ -1,0 +1,68 @@
+import Link from "next/link";
+import { SectionReveal } from "@/components/section-reveal";
+import { PackageCard } from "@/components/packages/package-card";
+import type { Dictionary } from "@/lib/i18n/dictionaries";
+import type { Locale } from "@/lib/i18n/config";
+import { ROUTES } from "@/lib/constants";
+import { localeHref } from "@/lib/i18n/routing";
+
+type PackagesPreviewSectionProps = {
+  locale: Locale;
+  packages: Dictionary["home"]["packages"];
+  learnMore: string;
+};
+
+export function PackagesPreviewSection({
+  locale,
+  packages,
+  learnMore,
+}: PackagesPreviewSectionProps) {
+  const variants = ["starter", "testReady", "intensive"] as const;
+
+  return (
+    <section className="border-y border-border bg-gradient-to-b from-muted/20 to-background py-14 sm:py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionReveal className="mx-auto max-w-2xl text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            {packages.title}
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+            {packages.subtitle}
+          </p>
+          <p className="mt-2 text-xs text-muted-foreground">{packages.disclaimer}</p>
+        </SectionReveal>
+
+        <div className="mx-auto mt-10 grid max-w-6xl items-end gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+          {packages.items.map((pkg, index) => (
+            <SectionReveal
+              key={pkg.name}
+              variant="up"
+              delay={index * 90}
+              className={`flex h-full ${pkg.popular ? "lg:-mt-3" : ""}`}
+            >
+              <PackageCard
+                locale={locale}
+                pkg={pkg}
+                variant={variants[index]}
+                popularLabel={packages.popular}
+                chooseLabel={packages.choose}
+                benefitsTitle={packages.benefitsTitle}
+                lessonsLabel={packages.lessonsLabel}
+                scheduleLabel={packages.scheduleLabel}
+              />
+            </SectionReveal>
+          ))}
+        </div>
+
+        <SectionReveal className="mt-10 text-center" variant="fade">
+          <Link
+            href={localeHref(locale, ROUTES.packages)}
+            className="inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            {learnMore}
+          </Link>
+        </SectionReveal>
+      </div>
+    </section>
+  );
+}

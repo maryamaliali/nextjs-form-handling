@@ -1,26 +1,535 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(0.99 0.005 200);
+  --foreground: oklch(0.22 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.02 260);
+  --muted: oklch(0.96 0.01 200);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --border: oklch(0.9 0.01 200);
+  --primary: oklch(0.52 0.12 175);
+  --primary-foreground: oklch(0.99 0.01 175);
+  --ring: oklch(0.52 0.12 175);
+  --destructive: oklch(0.55 0.2 25);
+}
+
+.dark {
+  --background: oklch(0.17 0.02 260);
+  --foreground: oklch(0.96 0.01 200);
+  --card: oklch(0.2 0.02 260);
+  --card-foreground: oklch(0.96 0.01 200);
+  --muted: oklch(0.24 0.02 260);
+  --muted-foreground: oklch(0.72 0.02 200);
+  --border: oklch(0.3 0.02 260);
+  --primary: oklch(0.72 0.11 175);
+  --primary-foreground: oklch(0.18 0.03 175);
+  --ring: oklch(0.72 0.11 175);
+  --destructive: oklch(0.65 0.18 25);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Padding below sticky header for page heroes (all breakpoints) */
+.msa-hero-top-spacing {
+  padding-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .msa-hero-top-spacing {
+    padding-top: 2.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .msa-hero-top-spacing {
+    padding-top: 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .msa-hero-top-spacing {
+    padding-top: 4.25rem;
+  }
+}
+
+::selection {
+  background: color-mix(in oklch, var(--primary) 35%, transparent);
+}
+
+@keyframes msa-reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes msa-reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes msa-reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes msa-reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes msa-reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.msa-reveal-up {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.msa-reveal-fade {
+  opacity: 0;
+}
+
+.msa-reveal-scale {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.msa-reveal-left {
+  opacity: 0;
+  transform: translateX(-22px);
+}
+
+.msa-reveal-right {
+  opacity: 0;
+  transform: translateX(22px);
+}
+
+.msa-reveal-active.msa-reveal-up {
+  animation: msa-reveal-up 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.msa-reveal-active.msa-reveal-fade {
+  animation: msa-reveal-fade 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.msa-reveal-active.msa-reveal-scale {
+  animation: msa-reveal-scale 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.msa-reveal-active.msa-reveal-left {
+  animation: msa-reveal-left 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.msa-reveal-active.msa-reveal-right {
+  animation: msa-reveal-right 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.msa-faq-answer {
+  animation: msa-reveal-fade 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-reveal-up,
+  .msa-reveal-fade,
+  .msa-reveal-scale,
+  .msa-reveal-left,
+  .msa-reveal-right,
+  .msa-reveal-active {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .msa-faq-answer {
+    animation: none !important;
+  }
+}
+
+.msa-card-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .msa-card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px color-mix(in oklch, var(--foreground) 12%, transparent);
+  }
+
+  .msa-package-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px color-mix(in oklch, var(--primary) 18%, transparent);
+  }
+
+  .msa-package-card:hover .msa-package-banner {
+    background-position: 100% 0;
+  }
+
+  .msa-package-card:hover .msa-package-cta {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px color-mix(in oklch, var(--primary) 35%, transparent);
+  }
+}
+
+.msa-package-card {
+  transition:
+    transform 0.3s cubic-bezier(0.15, 0.83, 0.66, 1),
+    box-shadow 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+.msa-package-banner {
+  transition: background-position 0.55s ease;
+}
+
+.msa-package-cta {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* —— 404 page —— */
+
+@keyframes msa-404-digit-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
+@keyframes msa-404-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes msa-404-pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.45;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 0;
+  }
+}
+
+.msa-404-digit {
+  animation: msa-404-digit-float 4s ease-in-out infinite;
+}
+
+.msa-404-digit-delay-1 {
+  animation-delay: 0.35s;
+}
+
+.msa-404-digit-delay-2 {
+  animation-delay: 0.7s;
+}
+
+.msa-404-shimmer-text {
+  background-image: linear-gradient(
+    90deg,
+    var(--foreground) 0%,
+    color-mix(in oklch, var(--primary) 70%, var(--foreground)) 45%,
+    var(--foreground) 90%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: msa-404-shimmer 5s linear infinite;
+}
+
+.msa-404-pulse-ring {
+  animation: msa-404-pulse-ring 2.8s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-404-digit,
+  .msa-404-shimmer-text,
+  .msa-404-pulse-ring {
+    animation: none !important;
+  }
+
+  .msa-404-shimmer-text {
+    color: var(--foreground);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+  }
+}
+
+/* —— Stats & icon animations —— */
+
+@keyframes msa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes msa-float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+@keyframes msa-orb-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate(12px, -16px) scale(1.08);
+    opacity: 0.75;
+  }
+}
+
+@keyframes msa-orb-drift-reverse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-10px, 12px) scale(1.06);
+  }
+}
+
+@keyframes msa-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes msa-shimmer {
+  0% {
+    opacity: 0.35;
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.35;
+    transform: translateX(100%) skewX(-12deg);
+  }
+}
+
+@keyframes msa-icon-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+@keyframes msa-icon-draw {
+  from {
+    stroke-dashoffset: 48;
+    opacity: 0.3;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes msa-check-draw {
+  from {
+    stroke-dasharray: 24;
+    stroke-dashoffset: 24;
+    opacity: 0.4;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes msa-icon-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes msa-icon-sparkle {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.65;
+  }
+}
+
+@keyframes msa-stat-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.msa-float {
+  animation: msa-float 4s ease-in-out infinite;
+}
+
+.msa-float-slow {
+  animation: msa-float-slow 5s ease-in-out infinite;
+}
+
+.msa-orb-drift {
+  animation: msa-orb-drift 9s ease-in-out infinite;
+}
+
+.msa-orb-drift-reverse {
+  animation: msa-orb-drift-reverse 11s ease-in-out infinite;
+}
+
+.msa-ring-spin {
+  animation: msa-ring-spin 24s linear infinite;
+}
+
+.msa-shimmer {
+  animation: msa-shimmer 3.5s ease-in-out infinite;
+  overflow: hidden;
+}
+
+.msa-icon-pulse {
+  animation: msa-icon-pulse 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.msa-icon-draw {
+  animation: msa-icon-draw 1.2s ease-out forwards;
+}
+
+.msa-icon-draw-delay {
+  animation: msa-icon-draw 1.2s ease-out 0.25s forwards;
+  opacity: 0;
+}
+
+.msa-icon-check-draw {
+  animation: msa-check-draw 0.9s ease-out 0.35s forwards;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+}
+
+.msa-icon-spin-slow {
+  animation: msa-icon-spin-slow 12s linear infinite;
+}
+
+.msa-icon-sparkle {
+  animation: msa-icon-sparkle 2.2s ease-in-out infinite;
+}
+
+.msa-stat-card {
+  opacity: 0;
+  animation: msa-stat-card-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-float,
+  .msa-float-slow,
+  .msa-orb-drift,
+  .msa-orb-drift-reverse,
+  .msa-ring-spin,
+  .msa-shimmer,
+  .msa-icon-pulse,
+  .msa-icon-draw,
+  .msa-icon-draw-delay,
+  .msa-icon-check-draw,
+  .msa-icon-spin-slow,
+  .msa-icon-sparkle,
+  .msa-stat-card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
 }
