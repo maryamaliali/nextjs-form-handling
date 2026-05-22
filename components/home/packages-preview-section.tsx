@@ -21,18 +21,18 @@ export function PackagesPreviewSection({
 
   return (
     <section className="border-y border-border bg-gradient-to-b from-muted/20 to-background py-14 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+      <div className="msa-container">
+        <SectionReveal className="mx-auto max-w-3xl text-center">
+          <h2 className="msa-section-title">
             {packages.title}
           </h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+          <p className="mt-3 text-base text-muted-foreground sm:text-lg">
             {packages.subtitle}
           </p>
           <p className="mt-2 text-xs text-muted-foreground">{packages.disclaimer}</p>
         </SectionReveal>
 
-        <div className="mx-auto mt-10 grid max-w-6xl items-end gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        <div className="mx-auto mt-10 grid max-w-site items-end gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {packages.items.map((pkg, index) => (
             <SectionReveal
               key={pkg.name}

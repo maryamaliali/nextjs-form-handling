@@ -64,7 +64,7 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
         aria-hidden
       />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
+      <div className="relative msa-container py-14 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <SectionReveal
             className="lg:col-span-4"
@@ -85,7 +85,7 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                 </p>
                 <Link
                   href={localeHref(locale, ROUTES.contact)}
-                  className="group mt-4 inline-flex min-h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
+                  className="group mt-4 inline-flex min-h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
                 >
                   {dict.nav.book}
                   <span aria-hidden>→</span>
@@ -182,7 +182,7 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
 
       <SectionReveal variant="fade" delay={320}>
         <div className="relative border-t border-border/80 bg-card/30 px-4 py-6 backdrop-blur-sm sm:px-6">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-2 text-center text-xs text-muted-foreground sm:flex-row sm:gap-4">
+          <div className="mx-auto flex max-w-site flex-col items-center justify-center gap-2 text-center text-sm text-muted-foreground sm:flex-row sm:gap-4">
             <p>
               © {year} {dict.meta.siteName}. {dict.footer.rights}
             </p>

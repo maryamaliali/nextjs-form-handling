@@ -19,19 +19,19 @@ export function SuccessStorySection({
 }: SuccessStorySectionProps) {
   return (
     <section className="py-14 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="msa-container">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           <SectionReveal variant="fade">
             <p className="text-xs font-semibold uppercase tracking-wide text-primary">
               {story.badge}
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="mt-2 msa-section-title">
               {story.title}
             </h2>
             <p className="mt-3 text-sm font-medium text-muted-foreground">
               {story.name} · {story.tagline}
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
               {story.body}
             </p>
             <Link
@@ -53,7 +53,7 @@ export function SuccessStorySection({
                   <p className="mt-1 text-2xl font-bold text-primary sm:text-3xl">
                     {story.statValue}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                     {story.highlight}
                   </p>
                 </div>

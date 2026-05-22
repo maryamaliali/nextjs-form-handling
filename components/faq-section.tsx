@@ -18,15 +18,15 @@ export function FaqSection({
 
   return (
     <section className="border-t border-border/60 pt-12 md:pt-14">
-      <SectionReveal className="mx-auto max-w-2xl text-center" variant="fade">
-        <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+      <SectionReveal className="mx-auto max-w-3xl text-center" variant="fade">
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {title}
         </h2>
         {subtitle ? (
-          <p className="mt-2 text-sm text-muted-foreground sm:text-base">{subtitle}</p>
+          <p className="mt-2 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
         ) : null}
       </SectionReveal>
-      <ul className="mx-auto mt-8 max-w-2xl divide-y divide-border/80 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm">
+      <ul className="mx-auto mt-8 max-w-3xl divide-y divide-border/80 rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm">
         {items.map((item, i) => {
           const isOpen = open === i;
           return (
@@ -38,7 +38,7 @@ export function FaqSection({
                 aria-expanded={isOpen}
                 onClick={() => setOpen(isOpen ? null : i)}
               >
-                <span className="text-sm font-medium text-foreground sm:text-base">
+                <span className="text-base font-medium text-foreground sm:text-lg">
                   {item.question}
                 </span>
                 <span
@@ -49,7 +49,7 @@ export function FaqSection({
                 </span>
               </button>
               {isOpen ? (
-                <p className="msa-faq-answer border-t border-border/50 px-4 pb-4 text-sm leading-relaxed text-muted-foreground sm:px-5 sm:pb-5">
+                <p className="msa-faq-answer border-t border-border/50 px-4 pb-4 text-base leading-relaxed text-muted-foreground sm:px-5 sm:pb-5">
                   {item.answer}
                 </p>
               ) : null}

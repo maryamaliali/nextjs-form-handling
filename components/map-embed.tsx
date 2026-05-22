@@ -15,13 +15,13 @@ export function MapEmbed({
   return (
     <div className="grid gap-8 lg:grid-cols-5 lg:items-stretch lg:gap-10">
       <SectionReveal className="lg:col-span-2" variant="left">
-        <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+        <h2 className="msa-section-title">
           {title}
         </h2>
         <p className="mt-3 text-base font-medium text-primary/90 sm:text-lg">
           {subtitle}
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+        <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg">
           {note}
         </p>
       </SectionReveal>

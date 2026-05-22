@@ -15,12 +15,12 @@ type ReviewsSectionProps = {
 export function ReviewsSection({ home, sliderLabels }: ReviewsSectionProps) {
   return (
     <section className="border-y border-border bg-muted/15 py-14 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+      <div className="msa-container">
+        <SectionReveal className="mx-auto max-w-3xl text-center">
+          <h2 className="msa-section-title">
             {home.reviewsTitle}
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+          <p className="mt-2 text-base text-muted-foreground sm:text-lg">
             {home.customersSubtitle}
           </p>
         </SectionReveal>

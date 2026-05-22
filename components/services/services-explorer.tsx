@@ -80,7 +80,7 @@ export function ServicesExplorer({
           </p>
           <Link
             href={bookHref}
-            className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90"
+            className="mt-8 inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
           >
             {bookLabel}
           </Link>

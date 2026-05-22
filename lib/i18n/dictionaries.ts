@@ -33,6 +33,14 @@ export const dictionaries = {
         "Expert, patient instruction to get you test-ready. Learn at your pace — morning, evening, or weekends.",
       ctaBook: "Book a lesson",
       ctaWhatsApp: "WhatsApp us",
+      heroCards: {
+        meter: "Progress meter",
+        driving: "On the road",
+        license: "Licence ready",
+        test: "Test preparation",
+        schedule: "Flexible booking",
+        instructor: "DVSA instructor",
+      },
       explore: {
         title: "Where to next?",
         subtitle:
@@ -541,6 +549,14 @@ export const dictionaries = {
         "Cierpliwa, profesjonalna nauka przygotowująca do egzaminu. Tempo dopasowane do Ciebie — rano, wieczorem lub w weekendy.",
       ctaBook: "Umów jazdę",
       ctaWhatsApp: "Napisz na WhatsApp",
+      heroCards: {
+        meter: "Wskaźnik postępu",
+        driving: "Za kierownicą",
+        license: "Prawo jazdy",
+        test: "Przygotowanie do testu",
+        schedule: "Elastyczne terminy",
+        instructor: "Instruktor DVSA",
+      },
       explore: {
         title: "Dokąd dalej?",
         subtitle:

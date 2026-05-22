@@ -41,10 +41,10 @@ export default async function ContactPage({
 
   return (
     <div className="border-b border-border bg-gradient-to-b from-muted/15 to-background">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16 md:py-20">
+      <div className="msa-container py-14 sm:py-16 md:py-20">
         <PageHeader title={page.title} subtitle={page.subtitle} />
 
-        <div className="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2 lg:gap-8">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-2 lg:gap-8">
           <SectionReveal variant="left">
             <ContactDetails
               phoneLabel={page.phoneLabel}
@@ -56,7 +56,7 @@ export default async function ContactPage({
 
           <SectionReveal variant="right" delay={80}>
             <div className="rounded-2xl border border-border/80 bg-card/90 p-6 shadow-sm backdrop-blur-sm msa-card-lift">
-              <h2 className="text-base font-semibold text-foreground">
+              <h2 className="text-lg font-semibold text-foreground">
                 {page.formTitle}
               </h2>
               <div className="mt-5">
@@ -66,7 +66,7 @@ export default async function ContactPage({
           </SectionReveal>
         </div>
 
-        <div className="mx-auto mt-14 max-w-2xl">
+        <div className="mx-auto mt-14 max-w-3xl">
           <FaqSection
             title={page.faq.title}
             subtitle={page.faq.subtitle}
@@ -74,7 +74,7 @@ export default async function ContactPage({
           />
         </div>
 
-        <div className="mx-auto mt-14 max-w-5xl border-t border-border/60 pt-14">
+        <div className="mx-auto mt-14 max-w-6xl border-t border-border/60 pt-14">
           <MapEmbed
             title={map.title}
             subtitle={map.subtitle}

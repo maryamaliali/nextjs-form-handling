@@ -26,10 +26,10 @@ export function ServicesPreviewSection({
 
   return (
     <section className="border-y border-border bg-muted/10 py-14 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="msa-container">
         <SectionReveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="msa-section-title">
               {title}
             </h2>
           </div>
@@ -51,7 +51,7 @@ export function ServicesPreviewSection({
                 <h3 className="mt-4 text-base font-semibold text-foreground">
                   {card.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                <p className="mt-2 flex-1 text-base leading-relaxed text-muted-foreground">
                   {card.body}
                 </p>
               </article>

@@ -21,7 +21,7 @@ function GradientDefs({ idPrefix }: { idPrefix: string }) {
         <stop offset="100%" stopColor="color-mix(in oklch, var(--primary) 55%, white)" stopOpacity="1" />
       </linearGradient>
       <linearGradient id={accent} x1="100%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="color-mix(in oklch, var(--primary) 80%, oklch(0.75 0.14 85))" />
+        <stop offset="0%" stopColor="color-mix(in oklch, var(--primary) 80%, white)" />
         <stop offset="100%" stopColor="var(--primary)" />
       </linearGradient>
       <radialGradient id={glow} cx="50%" cy="50%" r="50%">

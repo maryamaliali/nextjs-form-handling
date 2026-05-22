@@ -41,14 +41,14 @@ export default async function PackagesPage({
 
   return (
     <div className="border-b border-border bg-gradient-to-b from-muted/30 to-background">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16 md:py-20">
+      <div className="msa-container py-14 sm:py-16 md:py-20">
         <PageHeader
           title={page.title}
           subtitle={page.subtitle}
           note={packages.disclaimer}
         />
 
-        <div className="mx-auto mt-12 grid max-w-6xl items-end gap-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-10">
+        <div className="mx-auto mt-12 grid max-w-site items-end gap-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-10">
           {packages.items.map((pkg, index) => (
             <SectionReveal
               key={pkg.name}

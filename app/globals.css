@@ -10,9 +10,10 @@
   --muted: oklch(0.96 0.01 200);
   --muted-foreground: oklch(0.45 0.02 260);
   --border: oklch(0.9 0.01 200);
-  --primary: oklch(0.52 0.12 175);
-  --primary-foreground: oklch(0.99 0.01 175);
-  --ring: oklch(0.52 0.12 175);
+  /* #f59e0b — oklch keeps color-mix/opacity utilities in sync with Tailwind */
+  --primary: oklch(76.86% 0.1647 70.67);
+  --primary-foreground: #ffffff;
+  --ring: oklch(76.86% 0.1647 70.67);
   --destructive: oklch(0.55 0.2 25);
 }
 
@@ -24,9 +25,9 @@
   --muted: oklch(0.24 0.02 260);
   --muted-foreground: oklch(0.72 0.02 200);
   --border: oklch(0.3 0.02 260);
-  --primary: oklch(0.72 0.11 175);
-  --primary-foreground: oklch(0.18 0.03 175);
-  --ring: oklch(0.72 0.11 175);
+  --primary: oklch(76.86% 0.1647 70.67);
+  --primary-foreground: #ffffff;
+  --ring: oklch(76.86% 0.1647 70.67);
   --destructive: oklch(0.65 0.18 25);
 }
 
@@ -38,16 +39,105 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-ring: var(--ring);
+  --color-primary: oklch(76.86% 0.1647 70.67);
+  --color-primary-foreground: #ffffff;
+  --color-ring: oklch(76.86% 0.1647 70.67);
   --color-destructive: var(--destructive);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --max-width-site: 1400px;
+}
+
+html {
+  font-size: 106.25%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Hero background video — hidden when user prefers reduced motion */
+.msa-hero-video {
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-hero-video {
+    display: none;
+  }
+}
+
+.msa-hero-feature-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .msa-hero-feature-card:hover {
+    border-color: color-mix(in oklch, var(--primary) 35%, var(--border));
+    box-shadow: 0 14px 36px color-mix(in oklch, var(--primary) 12%, transparent);
+  }
+}
+
+.msa-hero-carousel-viewport {
+  /* Vertical fade only — avoid clipping staggered card sides */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-hero-carousel-viewport [style*="transform"] {
+    transition: none !important;
+  }
+}
+
+.msa-hero-diagonal-stroke {
+  stroke-width: 6px;
+}
+
+@media (min-width: 640px) {
+  .msa-hero-diagonal-stroke {
+    stroke-width: 7px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .msa-hero-diagonal-stroke {
+    stroke-width: 9px;
+  }
+}
+
+@layer components {
+  .msa-container {
+    margin-inline: auto;
+    width: 100%;
+    max-width: var(--max-width-site);
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .msa-container {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  .msa-section-title {
+    @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+  }
 }
 
 /* Padding below sticky header for page heroes (all breakpoints) */

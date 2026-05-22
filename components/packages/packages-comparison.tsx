@@ -29,7 +29,7 @@ function CellValue({
 }) {
   if (value === "yes") {
     return (
-      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground">
         <PackageCheckIcon />
         <span className="sr-only">{includedLabel}</span>
       </span>
@@ -37,14 +37,14 @@ function CellValue({
   }
   if (value === "no") {
     return (
-      <span className="text-xs font-semibold text-muted-foreground/50">
+      <span className="text-sm font-semibold text-muted-foreground/50">
         —
         <span className="sr-only">{notIncludedLabel}</span>
       </span>
     );
   }
   return (
-    <span className="text-xs font-semibold text-muted-foreground">
+    <span className="text-sm font-semibold text-muted-foreground">
       {value}
     </span>
   );
@@ -67,11 +67,11 @@ export function PackagesComparison({
 
   return (
     <section className="mt-16 border-t border-border/60 pt-12 md:mt-20 md:pt-14">
-      <SectionReveal className="mx-auto max-w-2xl text-center" variant="fade">
-        <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+      <SectionReveal className="mx-auto max-w-3xl text-center" variant="fade">
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {title}
         </h2>
-        <p className="mt-2 text-sm text-muted-foreground sm:text-base">{subtitle}</p>
+        <p className="mt-2 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
       </SectionReveal>
 
       <SectionReveal className="mt-8 overflow-hidden" variant="up">

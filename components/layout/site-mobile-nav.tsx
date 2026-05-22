@@ -33,7 +33,7 @@ export function MobileNav({ locale, dict, links }: MobileNavProps) {
       {open ? (
         <div
           id="mobile-nav-panel"
-          className="fixed left-4 right-4 top-[4.75rem] z-50 mx-auto max-h-[min(70vh,28rem)] max-w-6xl overflow-y-auto overscroll-contain rounded-2xl border border-border bg-background/95 px-4 py-4 shadow-lg backdrop-blur-md sm:left-6 sm:right-6 sm:top-[5.25rem]"
+          className="fixed left-4 right-4 top-[4.75rem] z-50 mx-auto max-h-[min(70vh,28rem)] max-w-site overflow-y-auto overscroll-contain rounded-2xl border border-border bg-background/95 px-4 py-4 shadow-lg backdrop-blur-md sm:left-6 sm:right-6 sm:top-[5.25rem]"
         >
           <nav className="flex flex-col gap-1" aria-label="Mobile primary">
             {links.map((link) => (

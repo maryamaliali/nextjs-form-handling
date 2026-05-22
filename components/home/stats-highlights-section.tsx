@@ -12,7 +12,7 @@ export function StatsHighlightsSection({
 }: StatsHighlightsSectionProps) {
   return (
     <section className="border-b border-border bg-background py-12 sm:py-14 md:py-16">
-      <div className="mx-auto grid max-w-6xl gap-4 px-4 sm:grid-cols-2 sm:gap-5 sm:px-6 lg:grid-cols-3 lg:gap-6">
+      <div className="msa-container grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
         {HOME_STAT_HIGHLIGHTS.map((item, index) => {
           const copy = highlights[item.key];
 
@@ -40,7 +40,7 @@ export function StatsHighlightsSection({
               <h3 className="relative mt-4 text-base font-semibold text-foreground">
                 {copy.label}
               </h3>
-              <p className="relative mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+              <p className="relative mt-2 flex-1 text-base leading-relaxed text-muted-foreground">
                 {copy.description}
               </p>
 

@@ -150,7 +150,7 @@ export function PackageCard({
             </div>
             <Link
               href={localeHref(locale, ROUTES.contact)}
-              className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {chooseLabel}
             </Link>

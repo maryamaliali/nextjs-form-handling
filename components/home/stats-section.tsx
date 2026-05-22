@@ -13,12 +13,12 @@ export function StatsSection({ stats }: StatsSectionProps) {
 
   return (
     <section className="relative mt-6 overflow-hidden border-b border-border bg-muted/15 py-12 sm:py-14 md:py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal className="mx-auto max-w-2xl text-center" variant="fade">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+      <div className="msa-container">
+        <SectionReveal className="mx-auto max-w-3xl text-center" variant="fade">
+          <h2 className="msa-section-title">
             {title}
           </h2>
-          <p className="mt-3 text-sm text-muted-foreground sm:text-base">
+          <p className="mt-3 text-base text-muted-foreground sm:text-lg">
             {subtitle}
           </p>
         </SectionReveal>
@@ -68,7 +68,7 @@ export function StatsSection({ stats }: StatsSectionProps) {
           />
         </div>
 
-        <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
           {totalPassed.description}
         </p>
       </SectionReveal>

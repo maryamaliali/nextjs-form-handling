@@ -22,15 +22,15 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
 
   return (
     <header className="relative sticky top-0 z-40 px-4 sm:px-6">
-      <div className="absolute left-1/2 mx-auto mt-4 grid w-full max-w-6xl -translate-x-1/2 grid-cols-[auto_1fr_auto] items-center gap-2 rounded-full border border-border/80 bg-background/80 py-2 pl-3 pr-2 shadow-sm backdrop-blur-md sm:gap-3 sm:py-2.5 sm:pl-4 sm:pr-3">
+      <div className="absolute left-1/2 mx-auto mt-4 grid w-full max-w-site -translate-x-1/2 grid-cols-[auto_1fr_auto] items-center gap-2 rounded-full border border-border/80 bg-background/80 py-2 pl-3 pr-2 shadow-sm backdrop-blur-md sm:gap-3 sm:py-2.5 sm:pl-4 sm:pr-3">
         <Link
           href={base}
           className="group flex min-w-0 shrink-0 flex-col justify-center leading-tight"
         >
-          <span className="truncate text-sm font-semibold tracking-wide text-primary">
+          <span className="truncate text-base font-semibold tracking-wide text-primary">
             {dict.brand}
           </span>
-          <span className="truncate text-xs text-muted-foreground">
+          <span className="truncate text-sm text-muted-foreground">
             {dict.city}
           </span>
         </Link>
@@ -43,7 +43,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="whitespace-nowrap rounded-full px-2.5 py-2 text-center text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground lg:px-3.5"
+              className="whitespace-nowrap rounded-full px-2.5 py-2 text-center text-base font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground lg:px-3.5"
             >
               {link.label}
             </Link>
@@ -53,7 +53,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
         <div className="flex items-center justify-end gap-1.5 sm:gap-2">
           <a
             href={whatsappHref()}
-            className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 md:inline-flex"
+            className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 md:inline-flex"
             rel="noopener noreferrer"
             target="_blank"
           >

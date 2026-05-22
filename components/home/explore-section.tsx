@@ -15,12 +15,12 @@ export function ExploreSection({ locale, explore }: ExploreSectionProps) {
 
   return (
     <section className="py-14 md:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionReveal className="mx-auto max-w-xl text-center md:max-w-2xl">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+      <div className="msa-container">
+        <SectionReveal className="mx-auto max-w-2xl text-center md:max-w-3xl">
+          <h2 className="msa-section-title">
             {explore.title}
           </h2>
-          <p className="mt-2 text-sm text-muted-foreground sm:text-base">
+          <p className="mt-2 text-base text-muted-foreground sm:text-lg">
             {explore.subtitle}
           </p>
         </SectionReveal>

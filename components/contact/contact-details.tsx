@@ -42,7 +42,7 @@ export function ContactDetails({
           {whatsappLabel}
         </h2>
         <a
-          className="mt-3 inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+          className="mt-3 inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           href={whatsappHref()}
           rel="noopener noreferrer"
           target="_blank"

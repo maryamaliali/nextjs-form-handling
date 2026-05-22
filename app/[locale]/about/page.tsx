@@ -40,8 +40,8 @@ export default async function AboutPage({
 
   return (
     <div className="border-b border-border bg-gradient-to-b from-muted/20 to-background">
-      <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-16 md:py-20">
-        <PageHeader title={page.title} subtitle={page.subtitle} className="md:max-w-3xl" />
+      <div className="msa-container py-14 sm:py-16 md:py-20">
+        <PageHeader title={page.title} subtitle={page.subtitle} className="md:max-w-4xl" />
 
         <SectionReveal className="mt-10" variant="scale" delay={80}>
           <div className="flex gap-4 rounded-2xl border border-border/80 bg-card/90 p-5 shadow-sm backdrop-blur-sm msa-card-lift sm:p-6">
@@ -54,15 +54,15 @@ export default async function AboutPage({
               <p className="font-semibold text-foreground">
                 {page.instructor.name}
               </p>
-              <p className="text-sm text-primary">{page.instructor.role}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="text-base text-primary">{page.instructor.role}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground">
                 {page.instructor.blurb}
               </p>
             </div>
           </div>
         </SectionReveal>
 
-        <SectionReveal className="mt-10 space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base" variant="fade">
+        <SectionReveal className="mt-10 space-y-4 text-base leading-relaxed text-muted-foreground sm:text-lg" variant="fade">
           <p>{page.p1}</p>
           <p>{page.p2}</p>
         </SectionReveal>
@@ -123,17 +123,17 @@ export default async function AboutPage({
         </SectionReveal>
 
         <SectionReveal className="mt-14" variant="up">
-          <h2 className="text-lg font-semibold text-foreground">
+          <h2 className="text-xl font-semibold text-foreground">
             {page.listTitle}
           </h2>
           <CheckList items={page.beliefs} className="mt-4" />
         </SectionReveal>
 
         <SectionReveal className="mt-14" variant="up" delay={60}>
-          <h2 className="text-lg font-semibold text-foreground">
+          <h2 className="text-xl font-semibold text-foreground">
             {home.whyTitle}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-lg">
             {home.whyIntro}
           </p>
           <CheckList

@@ -11,9 +11,9 @@ type WhyUsSectionProps = {
 export function WhyUsSection({ title, intro, points }: WhyUsSectionProps) {
   return (
     <section className="py-14 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:grid lg:grid-cols-2 lg:items-start lg:gap-12">
+      <div className="msa-container lg:grid lg:grid-cols-2 lg:items-start lg:gap-12">
         <SectionReveal variant="fade">
-          <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="msa-section-title">
             {title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
