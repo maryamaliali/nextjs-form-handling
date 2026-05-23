@@ -13,7 +13,7 @@ function getLocaleFromPath(pathname: string): string | null {
   return segment && isLocale(segment) ? segment : null;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (

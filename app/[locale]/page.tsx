@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
-import { ExploreSection } from "@/components/home/explore-section";
-import { FinalCtaSection } from "@/components/home/final-cta-section";
-import { HeroSection } from "@/components/home/hero-section";
-import { ReviewsSection } from "@/components/home/reviews-section";
-import { ServicesPreviewSection } from "@/components/home/services-preview-section";
-import { StatsHighlightsSection } from "@/components/home/stats-highlights-section";
-import { StatsSection } from "@/components/home/stats-section";
-import { SuccessStorySection } from "@/components/home/success-story-section";
-import { WhyUsSection } from "@/components/home/why-us-section";
-import { ROUTES } from "@/lib/constants";
-import { getDictionary } from "@/lib/i18n/dictionaries";
-import { buildPageMetadata, resolveLocale } from "@/lib/seo/page-metadata";
+import type { Metadata } from 'next';
+import { ExploreSection } from '@/components/home/explore-section';
+import { FinalCtaSection } from '@/components/home/final-cta-section';
+import { HeroSection } from '@/components/home/hero-section';
+import { ScrollStorySection } from '@/components/home/scroll-story-section';
+import { ReviewsSection } from '@/components/home/reviews-section';
+import { ServicesPreviewSection } from '@/components/home/services-preview-section';
+import { StatsSection } from '@/components/home/stats-section';
+import { SuccessStorySection } from '@/components/home/success-story-section';
+import { WhyUsSection } from '@/components/home/why-us-section';
+import { ROUTES } from '@/lib/constants';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import { buildPageMetadata, resolveLocale } from '@/lib/seo/page-metadata';
 
 export async function generateMetadata({
   params,
@@ -51,8 +51,8 @@ export default async function HomePage({
   return (
     <div>
       <HeroSection locale={locale} dict={dict} />
-      <StatsSection stats={home.stats} />
-      <StatsHighlightsSection highlights={home.stats.highlights} />
+      <ScrollStorySection locale={locale} content={home.scrollStory} />
+      <StatsSection stats={home.stats} sliderLabels={sliderLabels} />
       <ServicesPreviewSection
         locale={locale}
         title={home.offerTitle}

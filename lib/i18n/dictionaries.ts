@@ -41,6 +41,41 @@ export const dictionaries = {
         schedule: "Flexible booking",
         instructor: "DVSA instructor",
       },
+      scrollStory: {
+        intro: {
+          highlight: "Clear lesson plans",
+          headlineSuffix: " & not a single worry",
+          body:
+            "We handle structured progress, test-route practice, and calm guidance so you stay focused on learning — not the admin.",
+          footnote: "*DVSA-approved instruction with dual-control vehicle for your safety.",
+        },
+        tabs: [
+          {
+            titleBefore: "Learn with ",
+            titleHighlight: "DVSA-approved",
+            titleAfter: " instruction",
+            body:
+              "Our mission is to build real confidence behind the wheel — patient teaching, local Nottingham routes, and lessons tailored to how you learn best.",
+          },
+          {
+            titleBefore: "Test-ready training for ",
+            titleHighlight: "first-time passes",
+            titleAfter: "",
+            body:
+              "Mock tests, manoeuvres, and route familiarisation on roads used at local DVSA centres — so test day feels familiar, not frightening.",
+          },
+          {
+            titleBefore: "Flexible scheduling, ",
+            titleHighlight: "all the way",
+            titleAfter: "",
+            body:
+              "Morning, evening, or weekend slots with easy WhatsApp booking — we fit lessons around your life until you are licence-ready.",
+          },
+        ],
+        cta: "Book a lesson",
+        mediaBadge: "DVSA approved",
+        mediaAlt: "Learner driver training illustration",
+      },
       explore: {
         title: "Where to next?",
         subtitle:
@@ -556,6 +591,42 @@ export const dictionaries = {
         test: "Przygotowanie do testu",
         schedule: "Elastyczne terminy",
         instructor: "Instruktor DVSA",
+      },
+      scrollStory: {
+        intro: {
+          highlight: "Przejrzysty plan lekcji",
+          headlineSuffix: " — bez zbędnego stresu",
+          body:
+            "Zajmujemy się strukturą nauki, trasami egzaminacyjnymi i spokojnym wsparciem, abyś mógł skupić się na jeździe — nie na formalnościach.",
+          footnote:
+            "*Instrukcja zatwierdzona przez DVSA, pojazd z podwójną kontrolą dla Twojego bezpieczeństwa.",
+        },
+        tabs: [
+          {
+            titleBefore: "Nauka z ",
+            titleHighlight: "instruktorem DVSA",
+            titleAfter: "",
+            body:
+              "Budujemy realną pewność za kierownicą — cierpliwe prowadzenie, lokalne trasy w Nottingham i lekcje dopasowane do Twojego tempa.",
+          },
+          {
+            titleBefore: "Przygotowanie do egzaminu pod ",
+            titleHighlight: "pierwsze podejście",
+            titleAfter: "",
+            body:
+              "Jazdy próbne, manewry i znajomość tras używanych w lokalnych ośrodkach DVSA — aby dzień egzaminu był przewidywalny.",
+          },
+          {
+            titleBefore: "Elastyczne terminy ",
+            titleHighlight: "na każdym etapie",
+            titleAfter: "",
+            body:
+              "Lekcje rano, wieczorem lub w weekendy z łatwą rezerwacją przez WhatsApp — dopasowujemy grafik do Twojego życia.",
+          },
+        ],
+        cta: "Umów jazdę",
+        mediaBadge: "DVSA",
+        mediaAlt: "Ilustracja nauki jazdy",
       },
       explore: {
         title: "Dokąd dalej?",

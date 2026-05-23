@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import { mobileNavLabels } from "@/lib/i18n/ui-labels";
-import type { NavLink } from "@/lib/i18n/routing";
+import { localeHref, type NavLink } from "@/lib/i18n/routing";
 import { whatsappHref } from "@/lib/site";
 
 type MobileNavProps = {
@@ -38,8 +38,8 @@ export function MobileNav({ locale, dict, links }: MobileNavProps) {
           <nav className="flex flex-col gap-1" aria-label="Mobile primary">
             {links.map((link) => (
               <Link
-                key={link.href}
-                href={link.href}
+                key={link.path}
+                href={localeHref(locale, link.path)}
                 className="rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
                 onClick={() => setOpen(false)}
               >

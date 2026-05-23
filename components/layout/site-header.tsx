@@ -5,7 +5,11 @@ import {
   langSwitchAriaLabel,
   themeToggleLabels,
 } from "@/lib/i18n/ui-labels";
-import { buildNavLinks, localeBasePath } from "@/lib/i18n/routing";
+import {
+  buildHeaderNavLinks,
+  localeBasePath,
+  localeHref,
+} from "@/lib/i18n/routing";
 import { LangSwitch } from "@/components/lang-switch";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { whatsappHref } from "@/lib/site";
@@ -18,7 +22,7 @@ type SiteHeaderProps = {
 
 export function SiteHeader({ locale, dict }: SiteHeaderProps) {
   const base = localeBasePath(locale);
-  const links = buildNavLinks(locale, dict);
+  const links = buildHeaderNavLinks(locale, dict);
 
   return (
     <header className="relative sticky top-0 z-40 px-4 sm:px-6">
@@ -41,8 +45,8 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
         >
           {links.map((link) => (
             <Link
-              key={link.href}
-              href={link.href}
+              key={link.path}
+              href={localeHref(locale, link.path)}
               className="whitespace-nowrap rounded-full px-2.5 py-2 text-center text-base font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground lg:px-3.5"
             >
               {link.label}
@@ -51,6 +55,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
         </nav>
 
         <div className="flex items-center justify-end gap-1.5 sm:gap-2">
+          <ThemeToggle labels={themeToggleLabels(locale)} />
           <a
             href={whatsappHref()}
             className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 md:inline-flex"
@@ -59,12 +64,17 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           >
             {dict.nav.book}
           </a>
-          <ThemeToggle labels={themeToggleLabels(locale)} />
+          <MobileNav locale={locale} dict={dict} links={links} />
+        </div>
+      </div>
+
+      <div className="pointer-events-none fixed inset-y-0 right-0 z-50 flex items-center pr-3 sm:pr-4">
+        <div className="pointer-events-auto">
           <LangSwitch
             current={locale}
             ariaLabel={langSwitchAriaLabel(locale)}
+            variant="floating"
           />
-          <MobileNav locale={locale} dict={dict} links={links} />
         </div>
       </div>
     </header>

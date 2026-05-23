@@ -43,6 +43,9 @@ export const HOME_STAT_HIGHLIGHTS = [
 export type HomeStatHighlightKey = (typeof HOME_STAT_HIGHLIGHTS)[number]['key'];
 
 export const TESTIMONIAL_AUTO_MS = 5200;
+export const STATS_CAROUSEL_INTERVAL_MS = 5200;
+/** Auto-advance interval for home stats carousel (4 slides). */
+export const STATS_CAROUSEL_3D_STEP_MS = 5000;
 export const TESTIMONIAL_SWIPE_THRESHOLD_PX = 48;
 
 export const THEME_STORAGE_KEY = 'msa-theme';
@@ -57,6 +60,21 @@ export const HERO_VIDEO_PLAYBACK_RATE = 0.75;
 export const HERO_CAROUSEL_VISIBLE_COUNT = 3;
 export const HERO_CAROUSEL_INTERVAL_MS = 4000;
 export const HERO_CAROUSEL_TRANSITION_MS = 700;
+
+/** Scroll-story images in /public. */
+export const SCROLL_STORY_DRIVING_CAR_IMAGE =
+  '/driving-car-view-drivers-seat-600nw-2479245119.webp';
+export const SCROLL_STORY_SECONDARY_IMAGE = '/images.jpeg';
+
+/** Auto-rotate interval for home scroll-story carousel. */
+export const SCROLL_STORY_INTERVAL_MS = 1000;
+
+/** Tab panel media for home scroll-story section (right card). */
+export const SCROLL_STORY_TAB_MEDIA = [
+  { src: SCROLL_STORY_DRIVING_CAR_IMAGE },
+  { src: SCROLL_STORY_SECONDARY_IMAGE },
+  { src: SCROLL_STORY_DRIVING_CAR_IMAGE },
+] as const;
 
 export const OPEN_GRAPH_LOCALE: Record<'en' | 'pl', string> = {
   en: 'en_GB',
