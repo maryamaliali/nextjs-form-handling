@@ -1,16 +1,55 @@
+"use client";
+
 import Link from "next/link";
-import { ServiceIcon } from "@/components/icons/service-icon";
-import { SectionReveal } from "@/components/section-reveal";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import { SERVICE_SLUG_ORDER, ROUTES } from "@/lib/constants";
 import { localeHref } from "@/lib/i18n/routing";
+import { whatsappHref } from "@/lib/site";
+
+const AUTO_INTERVAL_MS = 4500;
+
+type ServiceSlug = (typeof SERVICE_SLUG_ORDER)[number];
+
+const SERVICE_IMAGES: Record<ServiceSlug, string> = {
+  beginner: "/lessons/beginnerLesson.webp",
+  intensive: "/lessons/intensiveCourse.webp",
+  refresher: "/lessons/refresher.jpg",
+  testPrep: "/lessons/testPreparation.jpg",
+  passPlus: "/lessons/passPlus.jpg",
+  flexible: "/lessons/flexibleSchedule.jpg",
+};
+
+const SERVICE_FEATURES: Record<ServiceSlug, string[]> = {
+  beginner: ["Cockpit drill & controls", "Quiet routes first", "Patient debriefs"],
+  intensive: ["Days, not months", "Daily progress checks", "Test slot booking help"],
+  refresher: ["Build back confidence", "Refresher of manoeuvres", "Real-world routes"],
+  testPrep: ["Mock test routes", "Manoeuvre drilling", "Calm test-day plan"],
+  passPlus: ["Motorway tuition", "Night driving", "Rural & town drives"],
+  flexible: ["Morning to weekend slots", "WhatsApp rescheduling", "Pickup arranged"],
+};
+
+const SERVICE_BADGES: Record<ServiceSlug, string> = {
+  beginner: "Step 1 · Start here",
+  intensive: "Fast-track",
+  refresher: "Reignite",
+  testPrep: "Test ready",
+  passPlus: "Post-licence",
+  flexible: "Your schedule",
+};
 
 type ServicesPreviewSectionProps = {
   locale: Locale;
   title: string;
   services: Dictionary["home"]["services"];
   learnMore: string;
+  ctaBook: string;
+  ctaWhatsApp: string;
+  sliderLabels?: {
+    dot: string;
+    live: string;
+  };
 };
 
 export function ServicesPreviewSection({
@@ -18,47 +57,291 @@ export function ServicesPreviewSection({
   title,
   services,
   learnMore,
+  ctaBook,
+  ctaWhatsApp,
+  sliderLabels,
 }: ServicesPreviewSectionProps) {
   const cards = SERVICE_SLUG_ORDER.map((slug) => ({
     slug,
+    image: SERVICE_IMAGES[slug],
+    badge: SERVICE_BADGES[slug],
+    features: SERVICE_FEATURES[slug],
     ...services[slug],
   }));
 
+  const slideCount = cards.length;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+  const [inView, setInView] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const goTo = useCallback(
+    (index: number) => {
+      const next = ((index % slideCount) + slideCount) % slideCount;
+      setActiveIndex(next);
+    },
+    [slideCount],
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReducedMotion(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setInView(true);
+      return;
+    }
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" },
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion || paused || slideCount <= 1) return;
+    const id = window.setInterval(() => {
+      setActiveIndex((current) => (current + 1) % slideCount);
+    }, AUTO_INTERVAL_MS);
+    return () => window.clearInterval(id);
+  }, [reducedMotion, paused, slideCount]);
+
+  const touchStartX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const start = touchStartX.current;
+    if (start === null) return;
+    const dx = e.changedTouches[0].clientX - start;
+    if (Math.abs(dx) > 40) {
+      goTo(activeIndex + (dx < 0 ? 1 : -1));
+    }
+    touchStartX.current = null;
+  };
+
+  const active = cards[activeIndex];
+  const liveLabel = sliderLabels?.live
+    ?.replace("{n}", String(activeIndex + 1))
+    .replace("{total}", String(slideCount));
+
   return (
-    <section className="border-y border-border bg-muted/10 py-14 sm:py-16 md:py-20">
-      <div className="msa-container">
-        <SectionReveal className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h2 className="msa-section-title">
-              {title}
-            </h2>
-          </div>
+    <section
+      ref={sectionRef}
+      className={`msa-luxury-slider-section${inView ? " is-visible" : ""}`}
+      aria-label={title}
+    >
+      <SectionBackdrop />
+
+      <div className="msa-container msa-luxury-container">
+        <div className="msa-luxury-slider-head">
+          <h2 className="msa-section-title">{title}</h2>
           <Link
             href={localeHref(locale, ROUTES.services)}
-            className="inline-flex text-sm font-semibold text-primary underline-offset-4 hover:underline"
+            className="inline-flex shrink-0 text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             {learnMore}
           </Link>
-        </SectionReveal>
+        </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {cards.map((card, index) => (
-            <SectionReveal key={card.slug} variant="up" delay={index * 70}>
-              <article className="msa-card-lift flex h-full flex-col rounded-2xl border border-border/70 bg-card/80 p-5 shadow-sm backdrop-blur-sm sm:p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
-                  <ServiceIcon slug={card.slug} />
-                </div>
-                <h3 className="mt-4 text-base font-semibold text-foreground">
-                  {card.title}
-                </h3>
-                <p className="mt-2 flex-1 text-base leading-relaxed text-muted-foreground">
-                  {card.body}
-                </p>
-              </article>
-            </SectionReveal>
-          ))}
+        <div
+          className="msa-luxury-slider"
+          aria-roledescription="carousel"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
+          <div
+            className="msa-luxury-slides"
+            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          >
+            {cards.map((card, index) => (
+              <div
+                key={card.slug}
+                className={`msa-luxury-slide${index === activeIndex ? " is-active" : ""}`}
+                role="group"
+                aria-roledescription="slide"
+                aria-label={`${index + 1} / ${slideCount}`}
+                aria-hidden={index !== activeIndex}
+              >
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="msa-luxury-slide-img"
+                  draggable={false}
+                  loading={index === 0 || inView ? "eager" : "lazy"}
+                  decoding="async"
+                  fetchPriority={index === activeIndex ? "high" : "low"}
+                />
+                <span className="msa-luxury-slide-overlay" aria-hidden />
+                <span className="msa-luxury-slide-badge">
+                  <span className="msa-luxury-badge-dot" aria-hidden />
+                  {card.badge}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="msa-luxury-bottom" aria-live="polite" aria-atomic="true">
+            {liveLabel ? <span className="sr-only">{liveLabel}</span> : null}
+
+            <div key={activeIndex} className="msa-luxury-bottom-content">
+              <h3 className="msa-luxury-heading">{active.title}</h3>
+              <p className="msa-luxury-subtitle">{active.body}</p>
+
+              <ul className="msa-luxury-features" aria-label="Highlights">
+                {active.features.map((feature) => (
+                  <li key={feature} className="msa-luxury-feature">
+                    <CheckIcon />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="msa-luxury-buttons">
+                <Link
+                  href={localeHref(locale, ROUTES.contact)}
+                  className="msa-luxury-btn msa-luxury-btn-primary"
+                >
+                  {ctaBook}
+                </Link>
+                <a
+                  href={whatsappHref(`Hi, I'm interested in ${active.title}.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="msa-luxury-btn msa-luxury-btn-secondary"
+                >
+                  {ctaWhatsApp}
+                </a>
+              </div>
+            </div>
+
+            <div className="msa-luxury-indicators" role="tablist" aria-label={title}>
+              {cards.map((card, index) => (
+                <button
+                  key={card.slug}
+                  type="button"
+                  role="tab"
+                  aria-selected={index === activeIndex}
+                  aria-label={
+                    sliderLabels?.dot
+                      ? `${sliderLabels.dot} ${index + 1}: ${card.title}`
+                      : `${card.title}, ${index + 1} of ${slideCount}`
+                  }
+                  className={`msa-luxury-dot${index === activeIndex ? " is-active" : ""}`}
+                  onClick={() => goTo(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function SectionBackdrop() {
+  return (
+    <svg
+      className="msa-luxury-section-backdrop"
+      viewBox="0 0 1600 900"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden
+    >
+      <defs>
+        <radialGradient id="msa-lux-section-glow-1" cx="20%" cy="20%" r="40%">
+          <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.18" />
+          <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="msa-lux-section-glow-2" cx="80%" cy="80%" r="45%">
+          <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.14" />
+          <stop offset="100%" stopColor="var(--primary)" stopOpacity="0" />
+        </radialGradient>
+        <pattern id="msa-lux-dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.2" fill="var(--foreground)" fillOpacity="0.08" />
+        </pattern>
+      </defs>
+
+      <rect width="1600" height="900" fill="url(#msa-lux-dots)" />
+      <rect width="1600" height="900" fill="url(#msa-lux-section-glow-1)" />
+      <rect width="1600" height="900" fill="url(#msa-lux-section-glow-2)" />
+
+      <g className="msa-luxury-section-rings" style={{ transformOrigin: "800px 450px" }}>
+        <circle cx="800" cy="450" r="280" fill="none" stroke="var(--primary)" strokeOpacity="0.1" strokeWidth="1" />
+        <circle cx="800" cy="450" r="380" fill="none" stroke="var(--primary)" strokeOpacity="0.07" strokeWidth="1" />
+        <circle cx="800" cy="450" r="480" fill="none" stroke="var(--primary)" strokeOpacity="0.05" strokeWidth="1" />
+      </g>
+
+      <g className="msa-float">
+        <circle cx="200" cy="160" r="10" fill="var(--primary)" fillOpacity="0.35" />
+      </g>
+      <g className="msa-float-slow">
+        <circle cx="1380" cy="220" r="14" fill="var(--primary)" fillOpacity="0.25" />
+      </g>
+      <g className="msa-orb-drift">
+        <circle cx="240" cy="720" r="22" fill="var(--primary)" fillOpacity="0.18" />
+      </g>
+      <g className="msa-orb-drift-reverse">
+        <circle cx="1340" cy="700" r="18" fill="var(--primary)" fillOpacity="0.18" />
+      </g>
+      <g className="msa-float">
+        <circle cx="780" cy="120" r="6" fill="var(--primary)" fillOpacity="0.55" />
+      </g>
+      <g className="msa-float-slow">
+        <circle cx="820" cy="780" r="8" fill="var(--primary)" fillOpacity="0.4" />
+      </g>
+
+      <path
+        d="M 0 760 Q 400 700 800 760 T 1600 760"
+        stroke="var(--primary)"
+        strokeOpacity="0.15"
+        strokeWidth="1.5"
+        fill="none"
+      />
+      <path
+        d="M 0 800 Q 400 740 800 800 T 1600 800"
+        stroke="var(--primary)"
+        strokeOpacity="0.1"
+        strokeWidth="1.5"
+        fill="none"
+      />
+    </svg>
+  );
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      className="msa-luxury-feature-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" fill="var(--primary)" fillOpacity="0.12" />
+      <path
+        d="m8 12 3 3 5-6"
+        stroke="var(--primary)"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 }

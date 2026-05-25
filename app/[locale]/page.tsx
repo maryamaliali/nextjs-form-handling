@@ -6,8 +6,7 @@ import { ScrollStorySection } from '@/components/home/scroll-story-section';
 import { ReviewsSection } from '@/components/home/reviews-section';
 import { ServicesPreviewSection } from '@/components/home/services-preview-section';
 import { StatsSection } from '@/components/home/stats-section';
-import { SuccessStorySection } from '@/components/home/success-story-section';
-import { WhyUsSection } from '@/components/home/why-us-section';
+import { SuccessStoriesSlider } from '@/components/home/success-stories-slider';
 import { ROUTES } from '@/lib/constants';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { buildPageMetadata, resolveLocale } from '@/lib/seo/page-metadata';
@@ -58,17 +57,14 @@ export default async function HomePage({
         title={home.offerTitle}
         services={home.services}
         learnMore={dict.common.learnMore}
+        ctaBook={home.ctaBook}
+        ctaWhatsApp={home.ctaWhatsApp}
+        sliderLabels={{
+          dot: home.sliderDotLabel,
+          live: home.sliderLive,
+        }}
       />
-      <WhyUsSection
-        title={home.whyTitle}
-        intro={home.whyIntro}
-        points={home.whyPoints}
-      />
-      <SuccessStorySection
-        locale={locale}
-        story={home.successStory}
-        aboutLabel={dict.common.readAbout}
-      />
+      <SuccessStoriesSlider copy={home.successSlider} />
       <ExploreSection locale={locale} explore={home.explore} />
       <ReviewsSection home={home} sliderLabels={sliderLabels} />
       <FinalCtaSection locale={locale} copy={home} />

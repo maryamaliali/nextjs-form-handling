@@ -17,14 +17,16 @@ export function ReviewsSection({ home, sliderLabels }: ReviewsSectionProps) {
     <section className="border-y border-border bg-muted/15 py-14 sm:py-16 md:py-20">
       <div className="msa-container">
         <SectionReveal className="mx-auto max-w-3xl text-center">
-          <h2 className="msa-section-title">
-            {home.reviewsTitle}
-          </h2>
+          <h2 className="msa-section-title">{home.reviewsTitle}</h2>
           <p className="mt-2 text-base text-muted-foreground sm:text-lg">
             {home.customersSubtitle}
           </p>
         </SectionReveal>
-        <SectionReveal className="mx-auto mt-10 max-w-3xl" variant="scale" delay={100}>
+        <SectionReveal
+          className="mx-auto mt-10 max-w-2xl"
+          variant="scale"
+          delay={100}
+        >
           <TestimonialSlider
             items={home.reviews}
             labels={sliderLabels}

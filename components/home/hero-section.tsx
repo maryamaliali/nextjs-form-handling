@@ -48,21 +48,21 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
             <SectionReveal eager variant="fade" delay={0}>
-              <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card/80 px-4 py-2 text-base font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm">
+              <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-card/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm sm:text-sm">
                 <HeroSteeringIcon className="h-5 w-5 shrink-0" />
                 {h.badge}
               </p>
             </SectionReveal>
 
             <SectionReveal eager variant="up" delay={80}>
-              <h1 className="mt-6 max-w-4xl text-5xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl xl:text-8xl">
+              <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 {h.titleLine1}
                 <span className="mt-1 block text-primary">{h.titleLine2}</span>
               </h1>
             </SectionReveal>
 
             <SectionReveal eager variant="up" delay={160}>
-              <p className="mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground sm:text-2xl lg:max-w-3xl">
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:max-w-3xl">
                 {h.intro}
               </p>
             </SectionReveal>
@@ -71,14 +71,14 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href={localeHref(locale, ROUTES.contact)}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-base font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-lg"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-base"
                 >
                   <HeroSteeringIcon className="h-5 w-5" />
                   {h.ctaBook}
                 </Link>
                 <a
                   href={whatsappHref()}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border/80 bg-card/90 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur-sm transition hover:bg-muted/60 sm:text-lg"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border/80 bg-card/90 px-8 py-3.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition hover:bg-muted/60 sm:text-base"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
@@ -89,7 +89,7 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
             </SectionReveal>
 
             <SectionReveal eager variant="fade" delay={320}>
-              <ul className="mt-12 flex flex-wrap gap-3 text-base sm:gap-4">
+              <ul className="mt-12 flex flex-wrap gap-3 text-sm sm:gap-4">
                 {heroPills.map(({ icon: Icon, labelKey }) => (
                   <li
                     key={labelKey}

@@ -31,10 +31,10 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           href={base}
           className="group flex min-w-0 shrink-0 flex-col justify-center leading-tight"
         >
-          <span className="truncate text-base font-semibold tracking-wide text-primary">
+          <span className="truncate text-sm font-semibold tracking-wide text-primary sm:text-base">
             {dict.brand}
           </span>
-          <span className="truncate text-sm text-muted-foreground">
+          <span className="truncate text-xs text-muted-foreground sm:text-sm">
             {dict.city}
           </span>
         </Link>
@@ -47,7 +47,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
             <Link
               key={link.path}
               href={localeHref(locale, link.path)}
-              className="whitespace-nowrap rounded-full px-2.5 py-2 text-center text-base font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground lg:px-3.5"
+              className="whitespace-nowrap rounded-full px-2.5 py-2 text-center text-sm font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground lg:px-3.5"
             >
               {link.label}
             </Link>
@@ -58,7 +58,7 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
           <ThemeToggle labels={themeToggleLabels(locale)} />
           <a
             href={whatsappHref()}
-            className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-base font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 md:inline-flex"
+            className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 md:inline-flex"
             rel="noopener noreferrer"
             target="_blank"
           >

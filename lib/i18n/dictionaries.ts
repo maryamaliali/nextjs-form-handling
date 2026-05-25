@@ -223,6 +223,48 @@ export const dictionaries = {
             "Lessons around my uni timetable, honest feedback every week, and a calm approach on test day. Worth every penny.",
           name: "Omar A.",
         },
+        {
+          tag: "Local routes",
+          initials: "LD",
+          quote:
+            "Knew every Colwick and Beeston test route inside out. The route training made test day feel like just another lesson.",
+          name: "Liam D.",
+        },
+        {
+          tag: "Back on the road",
+          initials: "EF",
+          quote:
+            "After ten years off the road, I assumed I'd need to start over. A few targeted refreshers and I'm driving the kids to school again.",
+          name: "Emma F.",
+        },
+        {
+          tag: "Test centre prep",
+          initials: "NK",
+          quote:
+            "Mock tests at Watnall before the real one — same examiner-style feedback. Walked in calm, walked out with a pass.",
+          name: "Noah K.",
+        },
+        {
+          tag: "Manoeuvres sorted",
+          initials: "OP",
+          quote:
+            "Bay parking and parallel were my nightmare. Two focused sessions later they're easily my strongest part of the test.",
+          name: "Olivia P.",
+        },
+        {
+          tag: "Roundabout mastery",
+          initials: "AS",
+          quote:
+            "Used to freeze at busy roundabouts. Step-by-step coaching on Nottingham's worst ones and now I just drive through them.",
+          name: "Aiden S.",
+        },
+        {
+          tag: "Weekend learner",
+          initials: "MB",
+          quote:
+            "Weekend slots that actually stuck to time, plus a clear plan from week one. Couldn't ask for a smoother experience.",
+          name: "Maya B.",
+        },
       ],
       successStory: {
         badge: "Success story",
@@ -235,6 +277,16 @@ export const dictionaries = {
         statValue: "Pass — 2 minors",
         highlight:
           "Weekly mock routes, calm briefings, and a plan that matched real life commitments.",
+      },
+      successSlider: {
+        eyebrow: "Pass results",
+        title: "Real pupils. Real passes.",
+        subtitle:
+          "Step through the gallery — these are MSA learners on the day they got their full UK licence.",
+        imageAlt: "MSA Driving School pupil holding their pass certificate",
+        prev: "Previous pupil photo",
+        next: "Next pupil photo",
+        live: "Showing pupil photo {n} of {total}",
       },
       achievements: {
         title: "Achievements & milestones",
@@ -775,6 +827,48 @@ export const dictionaries = {
             "Jazdy pod plan zajęć na uczelni, szczery feedback co tydzień i spokój w dniu egzaminu. Warte każdego funta.",
           name: "Omar A.",
         },
+        {
+          tag: "Lokalne trasy",
+          initials: "LD",
+          quote:
+            "Znał na pamięć trasy egzaminacyjne z Colwick i Beeston. Trening tras sprawił, że dzień egzaminu był jak kolejna lekcja.",
+          name: "Liam D.",
+        },
+        {
+          tag: "Powrót za kierownicę",
+          initials: "EF",
+          quote:
+            "Po dziesięciu latach przerwy myślałam, że zaczynam od zera. Kilka jazd doskonalących i znów wożę dzieci do szkoły.",
+          name: "Emma F.",
+        },
+        {
+          tag: "Przygotowanie do egzaminu",
+          initials: "NK",
+          quote:
+            "Jazdy próbne pod Watnall przed prawdziwym egzaminem — feedback jak od egzaminatora. Wszedłem spokojny, wyszedłem ze zdanym.",
+          name: "Noah K.",
+        },
+        {
+          tag: "Manewry pod kontrolą",
+          initials: "OP",
+          quote:
+            "Parkowanie i równoległe to był koszmar. Dwie skupione sesje i to teraz mój najmocniejszy element egzaminu.",
+          name: "Olivia P.",
+        },
+        {
+          tag: "Mistrzostwo rond",
+          initials: "AS",
+          quote:
+            "Zamierałem na ruchliwych rondach. Krok po kroku w najtrudniejszych miejscach Nottingham — dziś po prostu przez nie przejeżdżam.",
+          name: "Aiden S.",
+        },
+        {
+          tag: "Weekendowy kursant",
+          initials: "MB",
+          quote:
+            "Weekendowe terminy zawsze punktualne i czytelny plan od pierwszego tygodnia. Nie mogłem prosić o lepsze doświadczenie.",
+          name: "Maya B.",
+        },
       ],
       successStory: {
         badge: "Historia sukcesu",
@@ -787,6 +881,16 @@ export const dictionaries = {
         statValue: "Zdanie — 2 drobne błędy",
         highlight:
           "Cotygodniowe trasy próbne, spokojne omówienia i plan dopasowany do życia codziennego.",
+      },
+      successSlider: {
+        eyebrow: "Wyniki egzaminu",
+        title: "Prawdziwi kursanci. Prawdziwe zdania.",
+        subtitle:
+          "Przeglądaj galerię — to nasi kursanci w dniu odbioru prawa jazdy.",
+        imageAlt: "Kursant szkoły MSA z certyfikatem zdanego egzaminu",
+        prev: "Poprzednie zdjęcie kursanta",
+        next: "Następne zdjęcie kursanta",
+        live: "Zdjęcie kursanta {n} z {total}",
       },
       achievements: {
         title: "Osiągnięcia i kamienie milowe",
