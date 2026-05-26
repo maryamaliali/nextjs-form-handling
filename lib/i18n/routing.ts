@@ -13,6 +13,24 @@ export function localeHref(locale: Locale, path: AppRoute): string {
   return path === ROUTES.home ? base : `${base}${path}`;
 }
 
+/**
+ * Returns true when `pathname` matches (or is nested under) the locale-aware
+ * href of the given route. Used to flag the currently-active nav item.
+ */
+export function isRouteActive(
+  pathname: string | null | undefined,
+  locale: Locale,
+  path: AppRoute,
+): boolean {
+  if (!pathname) return false;
+  const base = localeBasePath(locale);
+  if (path === ROUTES.home) {
+    return pathname === base || pathname === `${base}/`;
+  }
+  const target = `${base}${path}`;
+  return pathname === target || pathname.startsWith(`${target}/`);
+}
+
 export function buildNavLinks(locale: Locale, dict: Dictionary): NavLink[] {
   return [
     { href: localeHref(locale, ROUTES.home), label: dict.nav.home, path: ROUTES.home },

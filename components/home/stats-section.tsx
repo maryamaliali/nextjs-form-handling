@@ -26,7 +26,7 @@ export function StatsSection({ stats, sliderLabels }: StatsSectionProps) {
       <div className="relative z-10 msa-container">
         <SectionReveal className="mx-auto max-w-3xl text-center" variant="fade">
           <h2 className="msa-section-title">{title}</h2>
-          <p className="mt-3 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
+          <p className="mt-3 text-base font-extralight text-muted-foreground sm:text-lg">{subtitle}</p>
         </SectionReveal>
 
         <SectionReveal variant="scale">

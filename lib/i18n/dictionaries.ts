@@ -24,6 +24,9 @@ export const dictionaries = {
       socialTitle: "Social",
       rights: "All rights reserved.",
       dvsa: "DVSA approved instructor",
+      copyEmail: "Copy email address",
+      copyEmailSuccess: "Email copied",
+      copyEmailError: "Couldn't copy — try again",
     },
     home: {
       badge: "DVSA approved — Nottingham",
@@ -287,6 +290,16 @@ export const dictionaries = {
         prev: "Previous pupil photo",
         next: "Next pupil photo",
         live: "Showing pupil photo {n} of {total}",
+        passedBadge: "Passed",
+        services: {
+          fullPass: "Full Pass",
+          intensive: "Intensive",
+          refresh: "Refresh",
+          passPlus: "Pass Plus",
+          automatic: "Automatic",
+          manual: "Manual",
+          mockTest: "Mock Test",
+        },
       },
       achievements: {
         title: "Achievements & milestones",
@@ -627,6 +640,9 @@ export const dictionaries = {
       socialTitle: "Social media",
       rights: "Wszelkie prawa zastrzeżone.",
       dvsa: "Instruktor zatwierdzony przez DVSA",
+      copyEmail: "Skopiuj adres e-mail",
+      copyEmailSuccess: "Skopiowano e-mail",
+      copyEmailError: "Nie udało się skopiować — spróbuj ponownie",
     },
     home: {
       badge: "Zatwierdzone przez DVSA — Nottingham",
@@ -891,6 +907,16 @@ export const dictionaries = {
         prev: "Poprzednie zdjęcie kursanta",
         next: "Następne zdjęcie kursanta",
         live: "Zdjęcie kursanta {n} z {total}",
+        passedBadge: "Zdane",
+        services: {
+          fullPass: "Pełny kurs",
+          intensive: "Intensywny",
+          refresh: "Doszkalanie",
+          passPlus: "Pass Plus",
+          automatic: "Automat",
+          manual: "Manual",
+          mockTest: "Egzamin próbny",
+        },
       },
       achievements: {
         title: "Osiągnięcia i kamienie milowe",

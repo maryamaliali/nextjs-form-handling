@@ -7,6 +7,7 @@ import { ReviewsSection } from '@/components/home/reviews-section';
 import { ServicesPreviewSection } from '@/components/home/services-preview-section';
 import { StatsSection } from '@/components/home/stats-section';
 import { SuccessStoriesSlider } from '@/components/home/success-stories-slider';
+import { ScrollProgress } from '@/components/scroll-progress';
 import { ROUTES } from '@/lib/constants';
 import { getDictionary } from '@/lib/i18n/dictionaries';
 import { buildPageMetadata, resolveLocale } from '@/lib/seo/page-metadata';
@@ -49,6 +50,7 @@ export default async function HomePage({
 
   return (
     <div>
+      <ScrollProgress />
       <HeroSection locale={locale} dict={dict} />
       <ScrollStorySection locale={locale} content={home.scrollStory} />
       <StatsSection stats={home.stats} sliderLabels={sliderLabels} />

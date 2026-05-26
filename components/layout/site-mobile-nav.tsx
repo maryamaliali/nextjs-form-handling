@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import { mobileNavLabels } from "@/lib/i18n/ui-labels";
-import { localeHref, type NavLink } from "@/lib/i18n/routing";
+import { isRouteActive, localeHref, type NavLink } from "@/lib/i18n/routing";
 import { whatsappHref } from "@/lib/site";
 
 type MobileNavProps = {
@@ -17,6 +18,7 @@ type MobileNavProps = {
 export function MobileNav({ locale, dict, links }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const labels = mobileNavLabels(locale);
+  const pathname = usePathname();
 
   return (
     <div className="md:hidden">
@@ -36,16 +38,23 @@ export function MobileNav({ locale, dict, links }: MobileNavProps) {
           className="fixed left-4 right-4 top-[4.75rem] z-50 mx-auto max-h-[min(70vh,28rem)] max-w-site overflow-y-auto overscroll-contain rounded-2xl border border-border bg-background/95 px-4 py-4 shadow-lg backdrop-blur-md sm:left-6 sm:right-6 sm:top-[5.25rem]"
         >
           <nav className="flex flex-col gap-1" aria-label="Mobile primary">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                href={localeHref(locale, link.path)}
-                className="rounded-lg px-3 py-2 text-base font-medium text-foreground hover:bg-muted"
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {links.map((link) => {
+              const active = isRouteActive(pathname, locale, link.path);
+              const stateClass = active
+                ? "bg-primary/10 text-primary font-semibold"
+                : "text-foreground hover:bg-muted";
+              return (
+                <Link
+                  key={link.path}
+                  href={localeHref(locale, link.path)}
+                  aria-current={active ? "page" : undefined}
+                  className={`rounded-lg px-3 py-2 text-base font-medium ${stateClass}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <a
               href={whatsappHref()}
               className="mt-2 rounded-lg bg-primary px-3 py-2 text-center text-base font-semibold text-primary-foreground"

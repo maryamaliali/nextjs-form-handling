@@ -1,13 +1,15 @@
 import Link from 'next/link';
+import { Parallax } from '@/components/parallax';
 import { SectionReveal } from '@/components/section-reveal';
 import {
   HeroBackgroundPattern,
+  HeroBookIcon,
   HeroDiagonalLine,
-  HeroCarIcon,
   HeroGearIcon,
   HeroMapIcon,
   HeroShieldIcon,
   HeroSteeringIcon,
+  HeroWhatsAppIcon,
 } from '@/components/icons/hero-icons';
 import type { Dictionary } from '@/lib/i18n/dictionaries';
 import type { Locale } from '@/lib/i18n/config';
@@ -32,16 +34,40 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
   const h = dict.home;
 
   return (
-    <section className="relative min-h-[min(92vh,920px)] border-b border-border">
+    <section className="msa-hero-parallax relative min-h-[min(92vh,920px)] border-b border-border">
       {/* Looping background video */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         <HeroVideo />
         <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/45 to-background/75" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/50 via-background/20 to-background/40" />
-        <HeroBackgroundPattern className="absolute inset-0 h-full w-full text-primary" />
-        <HeroDiagonalLine className="absolute inset-0 h-full w-full" />
-        <div className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary/20 blur-3xl md:right-0" />
-        <div className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+        <Parallax
+          aria-hidden
+          className="absolute inset-0 h-full w-full"
+          strength={-60}
+        >
+          <HeroBackgroundPattern className="absolute inset-0 h-full w-full text-primary" />
+        </Parallax>
+        <Parallax
+          aria-hidden
+          className="absolute inset-0 h-full w-full"
+          strength={40}
+        >
+          <HeroDiagonalLine className="absolute inset-0 h-full w-full" />
+        </Parallax>
+        <Parallax
+          aria-hidden
+          className="absolute -right-24 -top-24 h-96 w-96"
+          strength={-80}
+        >
+          <div className="msa-hero-orb h-full w-full rounded-full bg-primary/20 blur-3xl md:right-0" />
+        </Parallax>
+        <Parallax
+          aria-hidden
+          className="absolute -bottom-32 -left-24 h-80 w-80"
+          strength={80}
+        >
+          <div className="msa-hero-orb msa-hero-orb--alt h-full w-full rounded-full bg-primary/10 blur-3xl" />
+        </Parallax>
       </div>
 
       <div className="msa-container relative z-10 flex min-h-[min(92vh,920px)] flex-col justify-center py-28 sm:py-32 md:py-36 lg:py-40">
@@ -55,14 +81,14 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
             </SectionReveal>
 
             <SectionReveal eager variant="up" delay={80}>
-              <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              <h1 className="msa-hero-title mt-6 max-w-4xl text-5xl font-normal text-foreground sm:text-6xl lg:text-7xl">
                 {h.titleLine1}
                 <span className="mt-1 block text-primary">{h.titleLine2}</span>
               </h1>
             </SectionReveal>
 
             <SectionReveal eager variant="up" delay={160}>
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg lg:max-w-3xl">
+              <p className="mt-6 max-w-2xl text-base font-extralight leading-relaxed text-muted-foreground sm:text-lg lg:max-w-3xl">
                 {h.intro}
               </p>
             </SectionReveal>
@@ -71,18 +97,18 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href={localeHref(locale, ROUTES.contact)}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-base"
+                  className="inline-flex min-h-12 justify-center gap-2 rounded-full items-start bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-base"
                 >
-                  <HeroSteeringIcon className="h-5 w-5" />
+                  <HeroBookIcon className="h-5 w-5" />
                   {h.ctaBook}
                 </Link>
                 <a
                   href={whatsappHref()}
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border/80 bg-card/90 px-8 py-3.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition hover:bg-muted/60 sm:text-base"
+                  className="inline-flex min-h-12 justify-center gap-2 rounded-full border border-border/80 items-start bg-card/90 px-8 py-3.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition hover:bg-muted/60 sm:text-base"
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  <HeroCarIcon className="h-5 w-5 text-primary" />
+                  <HeroWhatsAppIcon className="h-5 w-5 text-[#25D366]" />
                   {h.ctaWhatsApp}
                 </a>
               </div>

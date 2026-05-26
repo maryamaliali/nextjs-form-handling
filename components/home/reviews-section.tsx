@@ -18,7 +18,7 @@ export function ReviewsSection({ home, sliderLabels }: ReviewsSectionProps) {
       <div className="msa-container">
         <SectionReveal className="mx-auto max-w-3xl text-center">
           <h2 className="msa-section-title">{home.reviewsTitle}</h2>
-          <p className="mt-2 text-base text-muted-foreground sm:text-lg">
+          <p className="mt-2 text-base font-extralight text-muted-foreground sm:text-lg">
             {home.customersSubtitle}
           </p>
         </SectionReveal>

@@ -15,6 +15,8 @@
   --primary-foreground: #ffffff;
   --ring: oklch(76.86% 0.1647 70.67);
   --destructive: oklch(0.55 0.2 25);
+  --font-display: var(--font-bebas-neue), "Bebas Neue", ui-sans-serif,
+    system-ui, sans-serif;
 }
 
 .dark {
@@ -44,12 +46,48 @@
   --color-ring: oklch(76.86% 0.1647 70.67);
   --color-destructive: var(--destructive);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bebas-neue), "Bebas Neue", ui-sans-serif, system-ui,
+    sans-serif;
   --max-width-site: 1400px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* —— Global display font (Bebas Neue) ————————————————————————
+   Applied site-wide via @layer base so every route picks it up
+   for headings, buttons, and anything tagged with .font-display
+   or the .msa-display utility. Body copy keeps the Geist sans
+   default for readability. */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  button,
+  [role='button'],
+  input[type='submit'],
+  input[type='button'],
+  input[type='reset'],
+  nav a,
+  a:where([class*='rounded-full'], [class*='rounded-xl'], [class*='rounded-2xl']),
+  .msa-display,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-synthesis: none;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: 1.05;
+  }
 }
 
 /* Hero background video — hidden when user prefers reduced motion */
@@ -132,7 +170,12 @@ body {
   }
 
   .msa-section-title {
-    @apply text-3xl font-bold tracking-tight text-foreground sm:text-4xl;
+    @apply text-4xl font-normal text-foreground sm:text-5xl;
+  }
+
+  .msa-hero-title {
+    letter-spacing: 0.015em;
+    line-height: 1;
   }
 }
 
@@ -278,6 +321,118 @@ body {
 
   .msa-faq-answer {
     animation: none !important;
+  }
+}
+
+/* ============================================================
+   Page scroll progress bar
+   ============================================================ */
+
+.msa-scroll-progress {
+  position: relative;
+  width: 100%;
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  overflow: hidden;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.msa-scroll-progress--sticky {
+  position: sticky;
+  top: 0;
+  inset-inline: 0;
+}
+
+.msa-scroll-progress-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--primary) 80%, transparent),
+    var(--primary) 40%,
+    color-mix(in oklch, var(--primary) 70%, white)
+  );
+  transform-origin: left center;
+  transition: transform 0.12s linear;
+  box-shadow: 0 0 12px color-mix(in oklch, var(--primary) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-scroll-progress-fill {
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Hero floating orb idle drift (subtle background life)
+   ============================================================ */
+
+@keyframes msa-hero-orb-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8px, -10px, 0) scale(1.04);
+  }
+}
+
+@keyframes msa-hero-orb-drift-alt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-12px, 8px, 0) scale(1.06);
+  }
+}
+
+.msa-hero-orb {
+  animation: msa-hero-orb-drift 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+.msa-hero-orb--alt {
+  animation: msa-hero-orb-drift-alt 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-hero-orb,
+  .msa-hero-orb--alt {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Explore-section card hover polish
+   ============================================================ */
+
+.msa-explore-card-icon {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease;
+}
+
+.msa-explore-card-title {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .msa-explore-card:hover .msa-explore-card-icon {
+    transform: scale(1.08) rotate(-3deg);
+    background-color: color-mix(in oklch, var(--primary) 18%, transparent);
+  }
+
+  .msa-explore-card:hover .msa-explore-card-title {
+    transform: translateX(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-explore-card-icon,
+  .msa-explore-card-title {
+    transition: none;
   }
 }
 
@@ -841,6 +996,7 @@ body {
   max-width: 100%;
   font-size: 0.58rem;
   line-height: 1.3;
+  font-weight: 200;
   color: var(--muted-foreground);
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -1138,15 +1294,56 @@ body {
   opacity: 0;
   transform: translateY(1.25rem);
   transition:
-    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
+  will-change: opacity, transform;
 }
 
 .msa-scroll-story-panel.is-active {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+.msa-scroll-story-panel.is-active .msa-scroll-story-panel-title {
+  animation: msa-scroll-story-text-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.08s;
+}
+
+.msa-scroll-story-panel.is-active .msa-scroll-story-line {
+  animation: msa-scroll-story-line-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.2s;
+  transform-origin: center;
+}
+
+.msa-scroll-story-panel.is-active .msa-scroll-story-panel-body {
+  animation: msa-scroll-story-text-in 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 0.28s;
+}
+
+@keyframes msa-scroll-story-text-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes msa-scroll-story-line-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.2);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
 }
 
 .msa-scroll-story-panel-title {
@@ -1172,6 +1369,7 @@ body {
 .msa-scroll-story-panel-body {
   margin: 0;
   font-size: 1rem;
+  font-weight: 200;
   line-height: 1.55;
   color: var(--muted-foreground);
 }
@@ -1243,7 +1441,7 @@ body {
   overflow: hidden;
   border-radius: clamp(0.75rem, 2vw, 1.25rem);
   border: 1px solid var(--border);
-  min-height: 14rem;
+  min-height: clamp(22rem, 75vw, 30rem);
   order: 1;
   box-shadow: 0 12px 40px color-mix(in oklch, var(--foreground) 8%, transparent);
 }
@@ -1260,10 +1458,11 @@ body {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: scale(1.04);
+  transform: scale(1.06);
   transition:
-    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
 .msa-scroll-story-media.is-active {
@@ -1273,11 +1472,11 @@ body {
 
 .msa-scroll-story-image {
   opacity: 0.55;
-  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .msa-scroll-story-media.is-active .msa-scroll-story-image {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 .msa-scroll-story-media-dim {
@@ -1355,6 +1554,7 @@ body {
 .msa-scroll-story-overlay-body {
   margin: 1rem 0 0;
   font-size: 1rem;
+  font-weight: 200;
   line-height: 1.55;
   color: color-mix(in oklch, white 88%, transparent);
 }
@@ -1363,6 +1563,7 @@ body {
   margin: 0.75rem 0 0;
   font-size: 0.8125rem;
   line-height: 1.4;
+  font-weight: 600;
   color: color-mix(in oklch, white 72%, transparent);
 }
 
@@ -1585,19 +1786,18 @@ body {
 
 .msa-luxury-heading {
   margin: 5px 0 0.3em;
-  font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
   color: var(--foreground);
   letter-spacing: 0.04em;
-  text-transform: capitalize;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 .msa-luxury-subtitle {
   margin: 0 0 10px;
   font-family: var(--font-sans);
-  font-weight: 400;
+  font-weight: 200;
   font-size: clamp(0.875rem, 1.5vw, 1rem);
   color: var(--muted-foreground);
   letter-spacing: 0.02em;
@@ -1647,9 +1847,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 0.875rem;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
   padding: 0.65em 1.3em;
   border: 2px solid transparent;
   border-radius: 8px;
@@ -1966,6 +2166,9 @@ body {
     transition: none;
   }
 
+  .msa-scroll-story-panel.is-active .msa-scroll-story-panel-title,
+  .msa-scroll-story-panel.is-active .msa-scroll-story-panel-body,
+  .msa-scroll-story-panel.is-active .msa-scroll-story-line,
   .msa-scroll-story-overlay-inner {
     animation: none;
   }
@@ -2064,6 +2267,7 @@ body {
   color: var(--muted-foreground);
   font-size: 0.95rem;
   line-height: 1.6;
+  font-weight: 200;
   max-width: 600px;
 }
 
@@ -2108,7 +2312,9 @@ body {
 .msa-success-slider-track.is-jumping .msa-success-tile,
 .msa-success-slider-track.is-jumping .msa-success-tile-img,
 .msa-success-slider-track.is-jumping .msa-success-tile-overlay,
-.msa-success-slider-track.is-jumping .msa-success-tile-badge {
+.msa-success-slider-track.is-jumping .msa-success-tile-badge,
+.msa-success-slider-track.is-jumping .msa-success-tile-service,
+.msa-success-slider-track.is-jumping .msa-success-tile-emoji {
   transition: none !important;
 }
 
@@ -2224,6 +2430,111 @@ body {
   color: var(--primary);
 }
 
+/* Service tag (top-left) — labels the lesson type behind each photo */
+.msa-success-tile-service {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  max-width: calc(100% - 28px);
+  padding: 0.34rem 0.62rem 0.34rem 0.42rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  background: color-mix(in oklch, var(--background) 82%, transparent);
+  border: 1px solid color-mix(in oklch, var(--primary) 28%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 14px color-mix(in oklch, var(--foreground) 12%, transparent);
+  opacity: 0.78;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.3s ease,
+    border-color 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.msa-success-tile.is-active .msa-success-tile-service {
+  opacity: 1;
+  transform: translateY(0);
+  background: color-mix(in oklch, var(--background) 92%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 55%, transparent);
+}
+
+.msa-success-tile-service-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--primary) 18%, transparent);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.msa-success-tile-service-label {
+  display: inline-block;
+  line-height: 1;
+}
+
+/* Reaction emoji bubble (top-right) — pupil expression of the day */
+.msa-success-tile-emoji {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  line-height: 1;
+  background: color-mix(in oklch, var(--background) 85%, transparent);
+  border: 1px solid color-mix(in oklch, var(--primary) 25%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px color-mix(in oklch, var(--foreground) 14%, transparent);
+  opacity: 0.85;
+  transform: translateY(-4px) scale(0.9);
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+  pointer-events: none;
+  user-select: none;
+}
+
+.msa-success-tile.is-active .msa-success-tile-emoji {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  border-color: color-mix(in oklch, var(--primary) 55%, transparent);
+  animation: msa-success-emoji-pop 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes msa-success-emoji-pop {
+  0% {
+    transform: translateY(-4px) scale(0.85) rotate(-8deg);
+  }
+  60% {
+    transform: translateY(0) scale(1.15) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
 /* Arrow controls */
 .msa-success-arrow {
   position: absolute;
@@ -2313,6 +2624,27 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .msa-success-tile-service {
+    font-size: 0.62rem;
+    padding: 0.28rem 0.55rem 0.28rem 0.34rem;
+    top: 10px;
+    left: 10px;
+  }
+  .msa-success-tile-service-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 0.72rem;
+  }
+  .msa-success-tile-emoji {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+    top: 10px;
+    right: 10px;
+  }
+}
+
 @media (max-width: 480px) {
   .msa-success-slider-section {
     padding: 3rem 0 3.5rem;
@@ -2333,6 +2665,25 @@ body {
     left: 10px;
     bottom: 10px;
   }
+  .msa-success-tile-service {
+    font-size: 0.55rem;
+    padding: 0.22rem 0.45rem 0.22rem 0.28rem;
+    top: 8px;
+    left: 8px;
+    letter-spacing: 0.03em;
+  }
+  .msa-success-tile-service-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 0.65rem;
+  }
+  .msa-success-tile-emoji {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+    top: 8px;
+    right: 8px;
+  }
   .msa-success-arrow {
     width: 38px;
     height: 38px;
@@ -2349,8 +2700,13 @@ body {
   .msa-success-tile-img,
   .msa-success-tile-overlay,
   .msa-success-tile-badge,
+  .msa-success-tile-service,
+  .msa-success-tile-emoji,
   .msa-success-arrow {
     transition: none;
+  }
+  .msa-success-tile.is-active .msa-success-tile-emoji {
+    animation: none;
   }
 }
 

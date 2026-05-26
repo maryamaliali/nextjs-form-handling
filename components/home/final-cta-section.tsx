@@ -22,7 +22,7 @@ export function FinalCtaSection({ locale, copy }: FinalCtaSectionProps) {
           <h2 className="msa-section-title text-primary-foreground">
             {copy.finalCtaTitle}
           </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base text-primary-foreground/90 sm:text-lg">
+          <p className="mx-auto mt-4 pb-4 max-w-3xl text-base text-primary-foreground/90 sm:text-lg">
             {copy.finalCtaBody}
           </p>
         </SectionReveal>

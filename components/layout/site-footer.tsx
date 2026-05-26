@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  FooterBrandIcon,
   FooterEmailIcon,
   FooterLinkIcon,
   FooterLocationIcon,
@@ -8,6 +7,8 @@ import {
   FooterShieldIcon,
   FooterWhatsAppIcon,
 } from "@/components/icons/footer-icons";
+import { BrandMark } from "@/components/brand-mark";
+import { CopyButton } from "@/components/copy-button";
 import { SectionReveal } from "@/components/section-reveal";
 import { SocialLinks } from "@/components/social-links";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -16,6 +17,7 @@ import { ROUTES } from "@/lib/constants";
 import { footerSocialHint } from "@/lib/i18n/ui-labels";
 import { buildNavLinks, localeHref } from "@/lib/i18n/routing";
 import { business, hasConfiguredSocialLinks, whatsappHref } from "@/lib/site";
+import { HeroBookIcon } from "../icons/hero-icons";
 
 type SiteFooterProps = {
   locale: Locale;
@@ -32,24 +34,28 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
       label: business.phoneDisplay,
       icon: FooterPhoneIcon,
       external: false,
+      copyValue: undefined,
     },
     {
       href: `mailto:${business.email}`,
       label: business.email,
       icon: FooterEmailIcon,
       external: false,
+      copyValue: business.email,
     },
     {
       href: whatsappHref(),
       label: "WhatsApp",
       icon: FooterWhatsAppIcon,
       external: true,
+      copyValue: undefined,
     },
     {
       href: undefined,
       label: `${business.addressLocality}, UK`,
       icon: FooterLocationIcon,
       external: false,
+      copyValue: undefined,
     },
   ] as const;
 
@@ -72,9 +78,7 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
             delay={0}
           >
             <div className="flex gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-1 ring-primary/25 msa-float-slow">
-                <FooterBrandIcon />
-              </div>
+              <BrandMark sizePx={56} className="msa-float-slow" />
               <div className="min-w-0">
                 <p className="text-base font-semibold text-foreground">
                   {dict.brand}
@@ -85,10 +89,11 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                 </p>
                 <Link
                   href={localeHref(locale, ROUTES.contact)}
-                  className="group mt-4 inline-flex min-h-10 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
-                >
+                  className="group mt-4 inline-flex min-h-10 items-center  gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                > 
+                  <HeroBookIcon className="h-5 w-5" />
+
                   {dict.nav.book}
-                  <span aria-hidden>→</span>
                 </Link>
               </div>
             </div>
@@ -138,23 +143,33 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                     <span className="min-w-0 break-all pt-1.5">{item.label}</span>
                   </>
                 );
+                const row = item.href ? (
+                  <a
+                    href={item.href}
+                    className="group flex flex-1 gap-3 rounded-lg px-1 py-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+                    {...(item.external
+                      ? { rel: "noopener noreferrer", target: "_blank" }
+                      : {})}
+                  >
+                    {inner}
+                  </a>
+                ) : (
+                  <div className="group flex flex-1 gap-3 rounded-lg px-1 py-1.5 text-sm text-muted-foreground">
+                    {inner}
+                  </div>
+                );
                 return (
-                  <li key={item.label}>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        className="group flex gap-3 rounded-lg px-1 py-1.5 text-sm text-muted-foreground transition hover:text-foreground"
-                        {...(item.external
-                          ? { rel: "noopener noreferrer", target: "_blank" }
-                          : {})}
-                      >
-                        {inner}
-                      </a>
-                    ) : (
-                      <div className="group flex gap-3 rounded-lg px-1 py-1.5 text-sm text-muted-foreground">
-                        {inner}
-                      </div>
-                    )}
+                  <li key={item.label} className="flex items-start gap-1">
+                    {row}
+                    {item.copyValue ? (
+                      <CopyButton
+                        value={item.copyValue}
+                        label={dict.footer.copyEmail}
+                        successLabel={dict.footer.copyEmailSuccess}
+                        errorLabel={dict.footer.copyEmailError}
+                        className="mt-1.5"
+                      />
+                    ) : null}
                   </li>
                 );
               })}

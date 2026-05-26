@@ -2,7 +2,10 @@
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { SectionReveal } from "@/components/section-reveal";
-import { SUCCESS_STORY_IMAGES } from "@/lib/constants";
+import {
+  SUCCESS_STORY_IMAGES,
+  SUCCESS_STORY_SERVICE_ICONS,
+} from "@/lib/constants";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 
 type SuccessStoriesSliderProps = {
@@ -155,11 +158,16 @@ export function SuccessStoriesSlider({ copy }: SuccessStoriesSliderProps) {
   const translate = containerW > 0 ? containerW / 2 - tileCenter : 0;
 
   // Build the repeated track. The React Compiler memoizes this automatically.
-  const tiles = Array.from({ length: trackLength }, (_, k) => ({
-    k,
-    src: SUCCESS_STORY_IMAGES[k % total],
-    imageIndex: k % total,
-  }));
+  const tiles = Array.from({ length: trackLength }, (_, k) => {
+    const story = SUCCESS_STORY_IMAGES[k % total];
+    return {
+      k,
+      src: story.src,
+      service: story.service,
+      emoji: story.emoji,
+      imageIndex: k % total,
+    };
+  });
 
   const activeImageIndex = ((rawIndex % total) + total) % total;
 
@@ -175,6 +183,7 @@ export function SuccessStoriesSlider({ copy }: SuccessStoriesSliderProps) {
         </SectionReveal>
       </div>
 
+      <SectionReveal variant="scale" delay={120}>
       <div
         ref={containerRef}
         className="msa-success-slider"
@@ -203,9 +212,11 @@ export function SuccessStoriesSlider({ copy }: SuccessStoriesSliderProps) {
           }}
           onTransitionEnd={handleTransitionEnd}
         >
-          {tiles.map(({ k, src, imageIndex }) => {
+          {tiles.map(({ k, src, service, emoji, imageIndex }) => {
             const isActive = k === rawIndex;
             const distance = Math.abs(k - rawIndex);
+            const serviceLabel = copy.services[service];
+            const serviceIcon = SUCCESS_STORY_SERVICE_ICONS[service];
             return (
               <button
                 type="button"
@@ -214,7 +225,7 @@ export function SuccessStoriesSlider({ copy }: SuccessStoriesSliderProps) {
                 style={{
                   width: isActive ? dims.active : dims.normal,
                 }}
-                aria-label={`${copy.imageAlt} (${imageIndex + 1} / ${total})`}
+                aria-label={`${copy.imageAlt} — ${serviceLabel} (${imageIndex + 1} / ${total})`}
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => goTo(k)}
                 tabIndex={isActive ? 0 : -1}
@@ -229,9 +240,24 @@ export function SuccessStoriesSlider({ copy }: SuccessStoriesSliderProps) {
                   draggable={false}
                 />
                 <span className="msa-success-tile-overlay" aria-hidden />
+                <span className="msa-success-tile-service" aria-hidden>
+                  <span className="msa-success-tile-service-icon">
+                    {serviceIcon}
+                  </span>
+                  <span className="msa-success-tile-service-label">
+                    {serviceLabel}
+                  </span>
+                </span>
+                <span
+                  className="msa-success-tile-emoji"
+                  role="img"
+                  aria-label={serviceLabel}
+                >
+                  {emoji}
+                </span>
                 <span className="msa-success-tile-badge" aria-hidden>
                   <CheckIcon />
-                  Passed
+                  {copy.passedBadge}
                 </span>
               </button>
             );
@@ -247,6 +273,7 @@ export function SuccessStoriesSlider({ copy }: SuccessStoriesSliderProps) {
           <ArrowIcon direction="right" />
         </button>
       </div>
+      </SectionReveal>
 
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {copy.live

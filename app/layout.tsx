@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Bebas_Neue, Geist } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { ThemeScript } from "@/components/theme-script";
@@ -9,6 +9,12 @@ import { defaultMetadata } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -24,7 +30,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${geistSans.variable} h-full scroll-smooth antialiased`}
+      className={`${geistSans.variable} ${bebasNeue.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-background font-sans text-foreground">
         <ThemeScript />
