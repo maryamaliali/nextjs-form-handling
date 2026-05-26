@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { FloatingWhatsapp } from "@/components/layout/floating-whatsapp";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { OPEN_GRAPH_LOCALE } from "@/lib/constants";
@@ -50,6 +51,11 @@ export default async function LocaleLayout({
       <SiteHeader locale={raw} dict={dict} />
       <main className="flex-1">{children}</main>
       <SiteFooter locale={raw} dict={dict} />
+      <FloatingWhatsapp
+        label={dict.footer.floatingWhatsapp.label}
+        tooltip={dict.footer.floatingWhatsapp.tooltip}
+        message={dict.footer.floatingWhatsapp.message}
+      />
     </div>
   );
 }

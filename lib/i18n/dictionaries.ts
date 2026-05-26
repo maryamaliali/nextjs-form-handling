@@ -27,6 +27,11 @@ export const dictionaries = {
       copyEmail: "Copy email address",
       copyEmailSuccess: "Email copied",
       copyEmailError: "Couldn't copy — try again",
+      floatingWhatsapp: {
+        label: "Chat on WhatsApp",
+        tooltip: "Need a hand? Chat with us",
+        message: "Hi MSA, I'd like to ask about driving lessons.",
+      },
     },
     home: {
       badge: "DVSA approved — Nottingham",
@@ -643,6 +648,11 @@ export const dictionaries = {
       copyEmail: "Skopiuj adres e-mail",
       copyEmailSuccess: "Skopiowano e-mail",
       copyEmailError: "Nie udało się skopiować — spróbuj ponownie",
+      floatingWhatsapp: {
+        label: "Napisz na WhatsApp",
+        tooltip: "Masz pytanie? Napisz do nas",
+        message: "Cześć MSA, chciał(a)bym zapytać o naukę jazdy.",
+      },
     },
     home: {
       badge: "Zatwierdzone przez DVSA — Nottingham",
