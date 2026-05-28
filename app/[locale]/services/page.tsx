@@ -1,14 +1,14 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { SectionReveal } from "@/components/section-reveal";
-import { FaqSection } from "@/components/faq-section";
-import { ServicesExplorer } from "@/components/services/services-explorer";
-import { CheckList } from "@/components/ui/check-list";
-import { PageHeader } from "@/components/ui/page-header";
-import { ROUTES, SERVICE_SLUG_ORDER } from "@/lib/constants";
-import { getDictionary } from "@/lib/i18n/dictionaries";
-import { localeHref } from "@/lib/i18n/routing";
-import { buildPageMetadata, resolveLocale } from "@/lib/seo/page-metadata";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { SectionReveal } from '@/components/section-reveal';
+import { FaqSection } from '@/components/faq-section';
+import { ServicesExplorer } from '@/components/services/services-explorer';
+import { CheckList } from '@/components/ui/check-list';
+import { PageHeader } from '@/components/ui/page-header';
+import { ROUTES, SERVICE_SLUG_ORDER } from '@/lib/constants';
+import { getDictionary } from '@/lib/i18n/dictionaries';
+import { localeHref } from '@/lib/i18n/routing';
+import { buildPageMetadata, resolveLocale } from '@/lib/seo/page-metadata';
 
 export async function generateMetadata({
   params,
@@ -45,21 +45,25 @@ export default async function ServicesPage({
   }));
 
   return (
-    <div className="border-b border-border bg-gradient-to-b from-muted/15 to-background">
-      <div className="msa-container py-14 sm:py-16 md:py-20">
-        <PageHeader
-          title={page.title}
-          subtitle={page.subtitle}
-          className="md:max-w-4xl"
-        />
+    <>
+        <div className="msa-container py-24 pb-12 sm:py-16 sm:pb-14 md:py-20 md:pb-16">
+          <PageHeader
+            title={page.title}
+            subtitle={page.subtitle}
+            className="md:max-w-4xl"
+          />
+        </div>
 
-        <ServicesExplorer
-          items={services}
-          bookLabel={dict.nav.book}
-          bookHref={localeHref(locale, ROUTES.contact)}
-          listLabel={page.listLabel}
-        />
+      <ServicesExplorer
+        items={services}
+        bookLabel={dict.nav.book}
+        bookHref={localeHref(locale, ROUTES.contact)}
+        listLabel={page.listLabel}
+        prevLabel={page.prevService}
+        nextLabel={page.nextService}
+      />
 
+      <div className="msa-container border-b border-border py-14 sm:py-16 md:py-20">
         <SectionReveal
           className="mx-auto mt-12 max-w-3xl rounded-2xl border border-dashed border-primary/35 bg-primary/5 px-5 py-6 text-center sm:mt-14 sm:px-8"
           variant="fade"
@@ -95,6 +99,6 @@ export default async function ServicesPage({
           items={page.faq.items}
         />
       </div>
-    </div>
+    </>
   );
 }

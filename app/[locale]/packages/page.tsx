@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SectionReveal } from "@/components/section-reveal";
 import { FaqSection } from "@/components/faq-section";
 import { PackageCard } from "@/components/packages/package-card";
+import { LearningJourneySection } from "@/components/packages/learning-journey-section";
 import { PackagesComparison } from "@/components/packages/packages-comparison";
 import { PageHeader } from "@/components/ui/page-header";
 import { ROUTES } from "@/lib/constants";
@@ -37,11 +38,9 @@ export default async function PackagesPage({
   const dict = await getDictionary(locale);
   const page = dict.packagesPage;
   const packages = dict.home.packages;
-  const variants = ["starter", "testReady", "intensive"] as const;
-
   return (
     <div className="border-b border-border bg-gradient-to-b from-muted/30 to-background">
-      <div className="msa-container py-14 sm:py-16 md:py-20">
+      <div className="msa-container py-24 sm:py-16 md:py-20">
         <PageHeader
           title={page.title}
           subtitle={page.subtitle}
@@ -54,12 +53,11 @@ export default async function PackagesPage({
               key={pkg.name}
               variant="up"
               delay={index * 90}
-              className={`flex h-full ${pkg.popular ? "lg:-mt-3" : ""}`}
+              className={`flex h-full ${pkg.popular ? "overflow-visible lg:-mt-6" : ""}`}
             >
               <PackageCard
                 locale={locale}
                 pkg={pkg}
-                variant={variants[index]}
                 popularLabel={packages.popular}
                 chooseLabel={packages.choose}
                 benefitsTitle={packages.benefitsTitle}
@@ -70,6 +68,10 @@ export default async function PackagesPage({
           ))}
         </div>
 
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:mt-10">
+          {packages.pricingNote}
+        </p>
+
         <PackagesComparison
           title={page.comparison.title}
           subtitle={page.comparison.subtitle}
@@ -79,7 +81,15 @@ export default async function PackagesPage({
           includedLabel={page.comparison.included}
           notIncludedLabel={page.comparison.notIncluded}
         />
+      </div>
 
+      <LearningJourneySection
+        label={page.learningJourney.label}
+        title={page.learningJourney.title}
+        steps={page.learningJourney.steps}
+      />
+
+      <div className="msa-container pb-14 sm:pb-16 md:pb-20 pt-12 sm:pt-14">
         <FaqSection
           title={page.faq.title}
           subtitle={page.faq.subtitle}

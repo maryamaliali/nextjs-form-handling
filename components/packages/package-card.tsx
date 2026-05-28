@@ -24,13 +24,6 @@ type PackageCardProps = {
   lessonsLabel: string;
   scheduleLabel: string;
   popularLabel: string;
-  variant?: "starter" | "testReady" | "intensive";
-};
-
-const bannerStyles: Record<NonNullable<PackageCardProps["variant"]>, string> = {
-  starter: "from-primary/35 via-primary/55 to-primary/35",
-  testReady: "from-primary/45 via-primary/70 to-primary/45",
-  intensive: "from-primary/30 via-primary/50 to-primary/30",
 };
 
 function parsePrice(price: string): { prefix: string; amount: string } {
@@ -47,7 +40,6 @@ export function PackageCard({
   lessonsLabel,
   scheduleLabel,
   popularLabel,
-  variant = "starter",
 }: PackageCardProps) {
   const isPopular = Boolean(pkg.popular);
   const { prefix, amount } = parsePrice(pkg.price);
@@ -56,28 +48,23 @@ export function PackageCard({
 
   return (
     <article
-      className={`group msa-card-lift msa-package-card relative mx-auto flex h-full w-full max-w-[520px] flex-col overflow-hidden rounded-2xl bg-gradient-to-b from-primary/15 to-card shadow-lg shadow-foreground/5 ${
+      className={`group msa-card-lift msa-package-card relative mx-auto flex h-full w-full max-w-[520px] flex-col rounded-2xl bg-gradient-to-b from-primary/15 to-card shadow-lg shadow-foreground/5 ${
         isPopular
-          ? "min-h-[560px] ring-2 ring-primary/40 lg:min-h-[600px]"
-          : "min-h-[500px] ring-1 ring-border/60"
+          ? "msa-package-card--featured min-h-[680px] overflow-visible ring-2 ring-primary/40 lg:min-h-[760px]"
+          : "min-h-[540px] overflow-hidden ring-1 ring-border/60"
       }`}
     >
-      <div className="relative shrink-0">
-        <div
-          className={`msa-package-banner w-full bg-gradient-to-r ${bannerStyles[variant]} bg-[length:200%_100%] ${
-            isPopular ? "h-10" : "h-8"
-          }`}
-          role="presentation"
+      {isPopular ? (
+        <span
+          className="msa-package-corner-badge"
+          data-label={popularLabel}
+          role="img"
+          aria-label={popularLabel}
         />
-        {isPopular ? (
-          <span className="absolute right-4 top-3 z-20 rounded-full bg-primary px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-primary-foreground shadow-md ring-2 ring-primary-foreground/20">
-            {popularLabel}
-          </span>
-        ) : null}
-      </div>
+      ) : null}
 
       <div
-        className={`flex flex-1 flex-col ${isPopular ? "gap-4 px-6 py-5 sm:px-7 sm:py-6" : "gap-3 px-6 py-4 sm:px-6 sm:py-5"}`}
+        className={`flex flex-1 flex-col overflow-hidden rounded-2xl ${isPopular ? "gap-4 px-6 pb-6 pt-8 sm:px-7 sm:pb-7 sm:pt-9" : "gap-3 px-6 py-5 sm:px-6 sm:py-5"}`}
       >
         <header className="space-y-2 text-center">
           <h2
@@ -94,8 +81,8 @@ export function PackageCard({
           </p>
         </header>
 
-        <div className="grid grid-cols-2 gap-2 rounded-[9px] bg-muted p-1">
-          <div className="rounded-[7px] border border-border/40 bg-card px-3 py-2.5 text-center shadow-sm">
+        <div className="msa-package-stats grid grid-cols-2 gap-2 rounded-[9px] bg-muted p-1">
+          <div className="msa-package-stat rounded-[7px] border border-border/40 bg-card px-3 py-2.5 text-center shadow-sm">
             <span className="block text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
               {lessonsLabel}
             </span>
@@ -103,7 +90,7 @@ export function PackageCard({
               {pkg.highlightLessons}
             </span>
           </div>
-          <div className="rounded-[7px] border border-border/40 bg-card px-3 py-2.5 text-center shadow-sm">
+          <div className="msa-package-stat rounded-[7px] border border-border/40 bg-card px-3 py-2.5 text-center shadow-sm">
             <span className="block text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
               {scheduleLabel}
             </span>
@@ -120,8 +107,8 @@ export function PackageCard({
           </span>
           <ul className={`flex flex-col ${isPopular ? "gap-3" : "gap-2.5"}`}>
             {pkg.features.map((feature) => (
-              <li key={feature} className="flex items-start justify-start gap-2.5">
-                <PackageCheckIcon />
+              <li key={feature} className="msa-package-feature flex items-start justify-start gap-2.5">
+                <PackageCheckIcon className="msa-package-feature-icon shrink-0 text-primary" />
                 <span className="text-xs font-semibold leading-relaxed text-muted-foreground sm:text-[13px]">
                   {feature}
                 </span>
@@ -150,7 +137,7 @@ export function PackageCard({
             </div>
             <Link
               href={localeHref(locale, ROUTES.contact)}
-              className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {chooseLabel}
             </Link>

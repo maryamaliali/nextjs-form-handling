@@ -1,4 +1,4 @@
-export function PackageCheckIcon() {
+export function PackageCheckIcon({ className }: { className?: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ export function PackageCheckIcon() {
       viewBox="0 0 16 16"
       height={16}
       width={16}
-      className="shrink-0 text-primary"
+      className={className ?? "shrink-0 text-primary"}
       aria-hidden
     >
       <rect fill="currentColor" rx={8} height={16} width={16} />

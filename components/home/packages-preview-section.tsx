@@ -17,8 +17,6 @@ export function PackagesPreviewSection({
   packages,
   learnMore,
 }: PackagesPreviewSectionProps) {
-  const variants = ["starter", "testReady", "intensive"] as const;
-
   return (
     <section className="border-y border-border bg-gradient-to-b from-muted/20 to-background py-14 sm:py-16 md:py-20">
       <div className="msa-container">
@@ -38,12 +36,11 @@ export function PackagesPreviewSection({
               key={pkg.name}
               variant="up"
               delay={index * 90}
-              className={`flex h-full ${pkg.popular ? "lg:-mt-3" : ""}`}
+              className={`flex h-full ${pkg.popular ? "overflow-visible lg:-mt-6" : ""}`}
             >
               <PackageCard
                 locale={locale}
                 pkg={pkg}
-                variant={variants[index]}
                 popularLabel={packages.popular}
                 chooseLabel={packages.choose}
                 benefitsTitle={packages.benefitsTitle}
@@ -53,6 +50,10 @@ export function PackagesPreviewSection({
             </SectionReveal>
           ))}
         </div>
+
+        <p className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-muted-foreground sm:mt-10">
+          {packages.pricingNote}
+        </p>
 
         <SectionReveal className="mt-10 text-center" variant="fade">
           <Link

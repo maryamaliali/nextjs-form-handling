@@ -19,7 +19,7 @@ export function PageHeader({ title, subtitle, note, className }: PageHeaderProps
         <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           {title}
         </h1>
-        <p className="mt-3 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
+        <p className="mt-3 text-base font-extralight text-muted-foreground sm:text-lg">{subtitle}</p>
         {note ? (
           <p className="mt-2 text-sm text-muted-foreground">{note}</p>
         ) : null}

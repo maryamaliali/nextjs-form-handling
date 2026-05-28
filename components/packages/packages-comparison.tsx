@@ -18,6 +18,8 @@ export type PackagesComparisonProps = {
   notIncludedLabel: string;
 };
 
+const FEATURED_COL_INDEX = 1;
+
 function CellValue({
   value,
   includedLabel,
@@ -29,7 +31,7 @@ function CellValue({
 }) {
   if (value === "yes") {
     return (
-      <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-muted-foreground">
+      <span className="inline-flex items-center justify-center">
         <PackageCheckIcon />
         <span className="sr-only">{includedLabel}</span>
       </span>
@@ -37,16 +39,14 @@ function CellValue({
   }
   if (value === "no") {
     return (
-      <span className="text-sm font-semibold text-muted-foreground/50">
+      <span className="text-sm font-medium text-muted-foreground/45">
         —
         <span className="sr-only">{notIncludedLabel}</span>
       </span>
     );
   }
   return (
-    <span className="text-sm font-semibold text-muted-foreground">
-      {value}
-    </span>
+    <span className="text-sm font-semibold text-muted-foreground">{value}</span>
   );
 }
 
@@ -68,28 +68,28 @@ export function PackagesComparison({
   return (
     <section className="mt-16 border-t border-border/60 pt-12 md:mt-20 md:pt-14">
       <SectionReveal className="mx-auto max-w-3xl text-center" variant="fade">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-          {title}
-        </h2>
-        <p className="mt-2 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
+        <h2 className="msa-section-title">{title}</h2>
+        <p className="mt-3 text-base text-muted-foreground sm:text-lg">{subtitle}</p>
       </SectionReveal>
 
-      <SectionReveal className="mt-8 overflow-hidden" variant="up">
+      <SectionReveal className="mt-8" variant="up">
         <div className="overflow-x-auto rounded-2xl border border-border bg-card shadow-sm">
           <table className="w-full min-w-[640px] border-collapse text-left">
             <thead>
-              <tr className="border-b border-border bg-gradient-to-b from-primary/15 to-card">
+              <tr className="border-b border-border bg-muted/40">
                 <th
                   scope="col"
-                  className="px-4 py-4 text-sm font-bold text-foreground sm:px-5"
+                  className="px-4 py-4 text-left text-sm font-bold text-foreground sm:px-5"
                 >
                   {columnFeature}
                 </th>
-                {headers.map((label) => (
+                {headers.map((label, colIndex) => (
                   <th
                     key={label}
                     scope="col"
-                    className="px-4 py-4 text-center text-sm font-bold text-foreground sm:px-5"
+                    className={`px-4 py-4 text-center text-sm font-bold text-foreground sm:px-5 ${
+                      colIndex === FEATURED_COL_INDEX ? "bg-primary/8" : ""
+                    }`}
                   >
                     {label}
                   </th>
@@ -102,22 +102,20 @@ export function PackagesComparison({
                 return (
                   <tr
                     key={row.feature}
-                    className={
-                      index % 2 === 0
-                        ? "bg-card"
-                        : "bg-muted/30 dark:bg-muted/20"
-                    }
+                    className={index % 2 === 0 ? "bg-card" : "bg-muted/25"}
                   >
                     <th
                       scope="row"
-                      className="px-4 py-3.5 text-xs font-bold text-foreground sm:px-5 sm:text-sm"
+                      className="px-4 py-3.5 text-left text-xs font-bold text-foreground sm:px-5 sm:text-sm"
                     >
                       {row.feature}
                     </th>
                     {values.map((value, colIndex) => (
                       <td
                         key={`${row.feature}-${colIndex}`}
-                        className="px-4 py-3.5 text-center sm:px-5"
+                        className={`px-4 py-3.5 text-center sm:px-5 ${
+                          colIndex === FEATURED_COL_INDEX ? "bg-primary/8" : ""
+                        }`}
                       >
                         <CellValue
                           value={value}
