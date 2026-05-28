@@ -1,3 +1,4 @@
+import { OpeningHours, type OpeningHoursRow } from "@/components/contact/opening-hours";
 import { business, whatsappHref } from "@/lib/site";
 
 type ContactDetailsProps = {
@@ -5,6 +6,9 @@ type ContactDetailsProps = {
   emailLabel: string;
   whatsappLabel: string;
   whatsappCta: string;
+  openingHoursTitle: string;
+  openingHoursTodayLabel: string;
+  openingHoursRows: OpeningHoursRow[];
 };
 
 export function ContactDetails({
@@ -12,6 +16,9 @@ export function ContactDetails({
   emailLabel,
   whatsappLabel,
   whatsappCta,
+  openingHoursTitle,
+  openingHoursTodayLabel,
+  openingHoursRows,
 }: ContactDetailsProps) {
   return (
     <div className="msa-card-lift space-y-5 rounded-2xl border border-border/80 bg-card/90 p-6 shadow-sm backdrop-blur-sm">
@@ -50,6 +57,11 @@ export function ContactDetails({
           {whatsappCta}
         </a>
       </div>
+      <OpeningHours
+        title={openingHoursTitle}
+        todayLabel={openingHoursTodayLabel}
+        rows={openingHoursRows}
+      />
     </div>
   );
 }

@@ -3274,3 +3274,650 @@ body {
     transition: none;
   }
 }
+
+/* —— About: owner magic card ————————————————————————————————— */
+.msa-owner-profile-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
+  background: linear-gradient(
+    165deg,
+    color-mix(in oklch, var(--primary) 8%, var(--card)) 0%,
+    var(--card) 45%,
+    color-mix(in oklch, var(--primary) 5%, var(--muted)) 100%
+  );
+  box-shadow: 0 5px 20px 2px color-mix(in oklch, var(--foreground) 6%, transparent);
+}
+
+.msa-about-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.msa-owner-hex-drift {
+  animation: msa-owner-hex-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes msa-owner-hex-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(12px, -8px);
+  }
+}
+
+@keyframes msa-about-dash-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+.msa-about-dash-flow {
+  animation: msa-about-dash-flow 12s linear infinite;
+}
+
+.msa-owner-profile-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.75rem;
+  padding: clamp(2.75rem, 6vw, 3.5rem) 1.25rem clamp(2rem, 4vw, 2.75rem);
+}
+
+.msa-owner-magic-card {
+  --msa-owner-avatar-size: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 17.5rem);
+  overflow: visible;
+}
+
+.msa-owner-magic-card__img {
+  width: var(--msa-owner-avatar-size);
+  height: var(--msa-owner-avatar-size);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklch, var(--primary) 95%, white) 0%,
+    color-mix(in oklch, var(--primary) 70%, oklch(0.35 0.08 265)) 100%
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    width 0.3s ease-in-out,
+    height 0.3s ease-in-out;
+  box-shadow: 0 8px 24px color-mix(in oklch, var(--primary) 35%, transparent);
+}
+
+.msa-owner-magic-card__img::before {
+  content: '';
+  border-radius: inherit;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  border: 0.65rem solid color-mix(in oklch, var(--background) 92%, var(--border));
+  pointer-events: none;
+}
+
+.msa-owner-magic-card__initials {
+  position: relative;
+  z-index: 1;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary-foreground);
+  font-family: var(--font-sans);
+}
+
+.msa-owner-magic-card__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: calc(var(--msa-owner-avatar-size) / -2 + 0.5rem);
+  padding: 0 1rem 0.25rem;
+}
+
+.msa-owner-magic-card__body {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  text-align: center;
+  color: var(--muted-foreground);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.msa-owner-magic-card__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.msa-owner-magic-card__title {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.06em;
+  font-family: var(--font-sans);
+}
+
+.msa-owner-magic-card__role {
+  font-size: 0.7rem;
+  text-align: center;
+  color: var(--muted-foreground);
+  letter-spacing: 0.04em;
+  font-family: var(--font-sans);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .msa-owner-magic-card:hover .msa-owner-magic-card__img {
+    --msa-owner-avatar-size: 6.875rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-owner-magic-card__img {
+    transition: none;
+  }
+
+  .msa-owner-hex-drift,
+  .msa-about-dash-flow {
+    animation: none;
+  }
+}
+
+/* —— About: shared panels & sections ——————————————————————————— */
+.msa-about-panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklch, var(--border) 85%, transparent);
+}
+
+.msa-about-panel__inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.msa-about-section-head {
+  max-width: 36rem;
+  margin-bottom: 1.75rem;
+}
+
+.msa-about-section-head--compact {
+  margin-bottom: 1.25rem;
+}
+
+.msa-about-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.msa-about-section-title--sm {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.msa-about-section-subtitle {
+  margin: 0.65rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+  max-width: 32rem;
+}
+
+.msa-about-section-accent {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin-top: 1rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    color-mix(in oklch, var(--primary) 25%, transparent)
+  );
+}
+
+/* Intro */
+.msa-about-panel--intro {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--card) 95%, var(--primary)) 0%,
+    var(--card) 50%,
+    color-mix(in oklch, var(--muted) 60%, var(--card)) 100%
+  );
+  box-shadow: 0 8px 32px color-mix(in oklch, var(--foreground) 5%, transparent);
+}
+
+.msa-about-intro {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .msa-about-intro {
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.msa-about-intro__accent {
+  display: block;
+  width: 4px;
+  min-height: 4rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary),
+    color-mix(in oklch, var(--primary) 20%, transparent)
+  );
+}
+
+.msa-about-intro__lead {
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  line-height: 1.65;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.msa-about-intro__body {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+/* Success story */
+.msa-about-panel--success {
+  background: linear-gradient(
+    160deg,
+    color-mix(in oklch, var(--primary) 6%, var(--card)) 0%,
+    var(--card) 40%,
+    color-mix(in oklch, var(--muted) 40%, var(--card)) 100%
+  );
+  box-shadow: 0 10px 40px color-mix(in oklch, var(--primary) 8%, transparent);
+}
+
+.msa-about-success-card {
+  position: relative;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--primary) 18%, var(--border));
+  background: color-mix(in oklch, var(--card) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.msa-about-success-card__top {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.msa-about-success-badge {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.msa-about-success-name {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.msa-about-success-quote {
+  margin: 1.25rem 0 0;
+  padding: 0;
+  border: none;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--muted-foreground);
+}
+
+.msa-about-success-stat {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  margin: 1.25rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+}
+
+.msa-about-success-stat dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.msa-about-success-stat dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+}
+
+.msa-about-success-highlight {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+.msa-success-quote-mark {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* Milestones */
+.msa-about-panel--milestones {
+  background: var(--navy-mid);
+  color: var(--navy-on);
+  border-color: color-mix(in oklch, var(--navy-on) 10%, transparent);
+  box-shadow: 0 16px 48px color-mix(in oklch, #000 25%, transparent);
+}
+
+.msa-about-panel--milestones .msa-section-label {
+  color: var(--primary);
+}
+
+.msa-about-panel--milestones .msa-about-section-title {
+  color: var(--navy-on);
+}
+
+.msa-about-panel--milestones .msa-about-section-subtitle {
+  color: var(--navy-muted);
+}
+
+.msa-about-milestones-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .msa-about-milestones-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.msa-about-milestones-item {
+  min-width: 0;
+}
+
+.msa-about-milestone-card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  height: 100%;
+  padding: 1.35rem 1.2rem 1.4rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--navy-on) 12%, transparent);
+  background: color-mix(in oklch, var(--navy-on) 5%, transparent);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.msa-about-milestone-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.2rem;
+  right: 1.2rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    color-mix(in oklch, var(--primary) 15%, transparent) 75%,
+    transparent
+  );
+}
+
+.msa-about-milestone-stat {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.25rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.65rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--primary);
+  background: color-mix(in oklch, var(--primary) 16%, transparent);
+  border: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
+}
+
+.msa-about-milestone-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--navy-on);
+}
+
+.msa-about-milestone-body {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--navy-muted);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .msa-about-milestone-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+    box-shadow: 0 14px 36px color-mix(in oklch, #000 30%, transparent);
+  }
+}
+
+/* Values */
+.msa-about-panel--values {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--muted) 50%, var(--background)) 0%,
+    var(--card) 100%
+  );
+}
+
+.msa-about-values-layout {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .msa-about-values-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+}
+
+.msa-about-values-block--why {
+  padding: clamp(1.25rem, 3vw, 1.5rem);
+  border-radius: 1rem;
+  border: 1px solid color-mix(in oklch, var(--primary) 15%, var(--border));
+  background: color-mix(in oklch, var(--card) 90%, var(--primary));
+  box-shadow: inset 0 1px 0 color-mix(in oklch, var(--navy-on) 40%, transparent);
+}
+
+.msa-about-beliefs-grid {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.msa-about-belief-card {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 1rem 1.1rem;
+  border-radius: 0.85rem;
+  border: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
+  background: var(--card);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--foreground);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.msa-about-belief-card p {
+  margin: 0;
+}
+
+.msa-about-values-check {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  color: var(--primary);
+}
+
+.msa-about-why-intro {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+}
+
+.msa-about-why-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.msa-about-why-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .msa-about-belief-card:hover {
+    transform: translateX(4px);
+    border-color: color-mix(in oklch, var(--primary) 30%, var(--border));
+    box-shadow: 0 8px 24px color-mix(in oklch, var(--primary) 8%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-about-milestone-card,
+  .msa-about-belief-card {
+    transition: none;
+  }
+
+  .msa-about-milestone-card:hover,
+  .msa-about-belief-card:hover {
+    transform: none;
+  }
+}
+
+/* Contact page — fixed gradient + SVG backdrop */
+.msa-contact-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100%;
+}
+
+.msa-contact-page__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.msa-contact-page__backdrop-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    color-mix(in oklch, var(--primary) 14%, var(--background)) 0%,
+    color-mix(in oklch, var(--muted) 55%, var(--background)) 38%,
+    var(--background) 72%,
+    color-mix(in oklch, var(--primary) 6%, var(--background)) 100%
+  );
+}
+
+.msa-contact-page__backdrop-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.95;
+}
+
+.msa-contact-backdrop-rings {
+  animation: msa-luxury-rings-spin 72s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .msa-contact-backdrop-rings {
+    animation: none;
+  }
+}

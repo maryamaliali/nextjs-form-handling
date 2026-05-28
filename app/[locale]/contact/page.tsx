@@ -3,6 +3,7 @@ import { SectionReveal } from "@/components/section-reveal";
 import { FaqSection } from "@/components/faq-section";
 import { ContactDetails } from "@/components/contact/contact-details";
 import { ContactForm } from "@/components/contact/contact-form";
+import { ContactPageBackdrop } from "@/components/contact/contact-page-backdrop";
 import { MapEmbed } from "@/components/map-embed";
 import { PageHeader } from "@/components/ui/page-header";
 import { ROUTES } from "@/lib/constants";
@@ -40,47 +41,53 @@ export default async function ContactPage({
   const map = dict.home.map;
 
   return (
-    <div className="border-b border-border bg-gradient-to-b from-muted/15 to-background">
-      <div className="msa-container py-14 sm:py-16 md:py-20">
-        <PageHeader title={page.title} subtitle={page.subtitle} />
+    <div className="msa-contact-page border-b border-border">
+      <ContactPageBackdrop />
+      <div className="relative z-[1]">
+        <div className="msa-container py-24 sm:py-16 md:py-20">
+          <PageHeader title={page.title} subtitle={page.subtitle} />
 
-        <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-2 lg:gap-8">
-          <SectionReveal variant="left">
-            <ContactDetails
-              phoneLabel={page.phoneLabel}
-              emailLabel={page.emailLabel}
-              whatsappLabel={page.whatsappLabel}
-              whatsappCta={page.whatsappCta}
-            />
-          </SectionReveal>
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-2 lg:gap-8">
+            <SectionReveal variant="left">
+              <ContactDetails
+                phoneLabel={page.phoneLabel}
+                emailLabel={page.emailLabel}
+                whatsappLabel={page.whatsappLabel}
+                whatsappCta={page.whatsappCta}
+                openingHoursTitle={page.openingHours.title}
+                openingHoursTodayLabel={page.openingHours.todayLabel}
+                openingHoursRows={page.openingHours.rows}
+              />
+            </SectionReveal>
 
-          <SectionReveal variant="right" delay={80}>
-            <div className="rounded-2xl border border-border/80 bg-card/90 p-6 shadow-sm backdrop-blur-sm msa-card-lift">
-              <h2 className="text-lg font-semibold text-foreground">
-                {page.formTitle}
-              </h2>
-              <div className="mt-5">
-                <ContactForm dict={dict} />
+            <SectionReveal variant="right" delay={80}>
+              <div className="msa-card-lift rounded-2xl border border-border/80 bg-card/90 p-6 shadow-sm backdrop-blur-sm">
+                <h2 className="text-lg font-semibold text-foreground">
+                  {page.formTitle}
+                </h2>
+                <div className="mt-5">
+                  <ContactForm dict={dict} />
+                </div>
               </div>
-            </div>
-          </SectionReveal>
-        </div>
+            </SectionReveal>
+          </div>
 
-        <div className="mx-auto mt-14 max-w-3xl">
-          <FaqSection
-            title={page.faq.title}
-            subtitle={page.faq.subtitle}
-            items={page.faq.items}
-          />
-        </div>
+          <div className="mx-auto mt-14 max-w-3xl">
+            <FaqSection
+              title={page.faq.title}
+              subtitle={page.faq.subtitle}
+              items={page.faq.items}
+            />
+          </div>
 
-        <div className="mx-auto mt-14 max-w-6xl border-t border-border/60 pt-14">
-          <MapEmbed
-            title={map.title}
-            subtitle={map.subtitle}
-            note={map.note}
-            iframeTitle={map.iframeTitle}
-          />
+          <div className="mx-auto mt-14 max-w-6xl border-t border-border/60 pt-14">
+            <MapEmbed
+              title={map.title}
+              subtitle={map.subtitle}
+              note={map.note}
+              iframeTitle={map.iframeTitle}
+            />
+          </div>
         </div>
       </div>
     </div>

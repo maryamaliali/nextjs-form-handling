@@ -6,6 +6,7 @@ import {
   submitContact,
   type ContactFormState,
 } from "@/app/[locale]/contact/actions";
+import { SubjectSelect } from "@/components/contact/subject-select";
 
 const inputClassName =
   "w-full rounded-lg border border-border bg-card px-3 py-2 text-foreground outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring";
@@ -48,6 +49,11 @@ export function ContactForm({ dict }: ContactFormProps) {
           className={inputClassName}
         />
       </div>
+      <SubjectSelect
+        label={c.formSubject}
+        placeholder={c.formSubjectPlaceholder}
+        options={c.formSubjectOptions}
+      />
       <div>
         <label className="mb-1 block text-sm font-medium" htmlFor="email">
           {c.formEmail}
