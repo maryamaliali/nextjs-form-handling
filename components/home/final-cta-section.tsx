@@ -29,7 +29,7 @@ export function FinalCtaSection({ locale, copy }: FinalCtaSectionProps) {
         <SectionReveal variant="up" delay={120} className="mt-8">
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href={localeHref(locale, ROUTES.contact)}
+              href={localeHref(locale, ROUTES.booking)}
               className="inline-flex min-h-11 items-center justify-center rounded-full bg-background px-6 py-3 text-sm font-semibold text-foreground shadow-sm transition hover:bg-background/90"
             >
               {copy.finalCtaOnline}

@@ -47,7 +47,7 @@ export default async function ContactPage({
         <div className="msa-container py-24 sm:py-16 md:py-20">
           <PageHeader title={page.title} subtitle={page.subtitle} />
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-2 lg:gap-8">
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:mt-14 lg:grid-cols-2 lg:gap-8">
             <SectionReveal variant="left">
               <ContactDetails
                 phoneLabel={page.phoneLabel}

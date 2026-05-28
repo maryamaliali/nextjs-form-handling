@@ -199,7 +199,7 @@ export function ServicesPreviewSection({
 
               <div className="msa-luxury-buttons">
                 <Link
-                  href={localeHref(locale, ROUTES.contact)}
+                  href={localeHref(locale, ROUTES.booking)}
                   className="msa-luxury-btn msa-luxury-btn-primary"
                 >
                   {ctaBook}

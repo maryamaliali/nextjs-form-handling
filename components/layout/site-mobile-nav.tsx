@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/config";
 import { mobileNavLabels } from "@/lib/i18n/ui-labels";
+import { ROUTES } from "@/lib/constants";
 import { isRouteActive, localeHref, type NavLink } from "@/lib/i18n/routing";
-import { whatsappHref } from "@/lib/site";
 
 type MobileNavProps = {
   locale: Locale;
@@ -55,15 +55,13 @@ export function MobileNav({ locale, dict, links }: MobileNavProps) {
                 </Link>
               );
             })}
-            <a
-              href={whatsappHref()}
+            <Link
+              href={localeHref(locale, ROUTES.booking)}
               className="mt-2 rounded-lg bg-primary px-3 py-2 text-center text-base font-semibold text-primary-foreground"
-              rel="noopener noreferrer"
-              target="_blank"
               onClick={() => setOpen(false)}
             >
               {dict.nav.book}
-            </a>
+            </Link>
           </nav>
         </div>
       ) : null}

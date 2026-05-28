@@ -10,9 +10,9 @@ import {
   localeBasePath,
 } from "@/lib/i18n/routing";
 import { LangSwitch } from "@/components/lang-switch";
+import { ROUTES } from "@/lib/constants";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { BrandMark } from "@/components/brand-mark";
-import { whatsappHref } from "@/lib/site";
 import { MobileNav } from "@/components/layout/site-mobile-nav";
 import { SiteHeaderNav } from "@/components/layout/site-header-nav";
 
@@ -47,14 +47,12 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
 
         <div className="flex items-center justify-end gap-1.5 sm:gap-2">
           <ThemeToggle labels={themeToggleLabels(locale)} />
-          <a
-            href={whatsappHref()}
+          <Link
+            href={localeBasePath(locale) + ROUTES.booking}
             className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 md:inline-flex"
-            rel="noopener noreferrer"
-            target="_blank"
           >
             {dict.nav.book}
-          </a>
+          </Link>
           <MobileNav locale={locale} dict={dict} links={links} />
         </div>
       </div>

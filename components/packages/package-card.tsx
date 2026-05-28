@@ -136,7 +136,7 @@ export function PackageCard({
               </p>
             </div>
             <Link
-              href={localeHref(locale, ROUTES.contact)}
+              href={localeHref(locale, ROUTES.booking)}
               className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {chooseLabel}

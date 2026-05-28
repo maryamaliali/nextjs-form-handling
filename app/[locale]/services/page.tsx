@@ -57,7 +57,7 @@ export default async function ServicesPage({
       <ServicesExplorer
         items={services}
         bookLabel={dict.nav.book}
-        bookHref={localeHref(locale, ROUTES.contact)}
+        bookHref={localeHref(locale, ROUTES.booking)}
         listLabel={page.listLabel}
         prevLabel={page.prevService}
         nextLabel={page.nextService}

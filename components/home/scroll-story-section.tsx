@@ -136,7 +136,7 @@ export function ScrollStorySection({ locale, content }: ScrollStorySectionProps)
 
               <div className="msa-scroll-story-left-bottom">
                 <Link
-                  href={localeHref(locale, ROUTES.contact)}
+                  href={localeHref(locale, ROUTES.booking)}
                   className="msa-scroll-story-cta"
                 >
                   <span>{content.cta}</span>

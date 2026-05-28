@@ -7,6 +7,7 @@ export const ROUTES = {
   packages: '/packages',
   about: '/about',
   contact: '/contact',
+  booking: '/booking',
 } as const;
 
 export type AppRoute = (typeof ROUTES)[keyof typeof ROUTES];
@@ -18,6 +19,7 @@ export const SITEMAP_PATHS: readonly AppRoute[] = [
   ROUTES.packages,
   ROUTES.about,
   ROUTES.contact,
+  ROUTES.booking,
 ];
 
 export const SERVICE_SLUG_ORDER: readonly ServiceSlug[] = [
