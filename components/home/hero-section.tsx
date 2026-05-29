@@ -6,6 +6,7 @@ import {
   HeroBookIcon,
   HeroDiagonalLine,
   HeroGearIcon,
+  HERO_DETAIL_ICONS,
   HeroMapIcon,
   HeroShieldIcon,
   HeroSteeringIcon,
@@ -93,18 +94,41 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
               </p>
             </SectionReveal>
 
+            <SectionReveal eager variant="up" delay={200}>
+              <ul className="mt-8 grid max-w-2xl gap-4 sm:grid-cols-3">
+                {h.heroDetails.map((detail, index) => {
+                  const Icon = HERO_DETAIL_ICONS[index] ?? HERO_DETAIL_ICONS[0];
+
+                  return (
+                    <li
+                      key={detail.title}
+                      className="rounded-2xl border border-border/80 bg-card/85 p-4 shadow-sm backdrop-blur-sm"
+                    >
+                      <Icon className="mb-4 h-5 w-5 text-primary" aria-hidden />
+                      <p className="text-sm font-semibold text-foreground">
+                        {detail.title}
+                      </p>
+                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                        {detail.body}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </SectionReveal>
+
             <SectionReveal eager variant="up" delay={240}>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href={localeHref(locale, ROUTES.booking)}
-                  className="inline-flex min-h-12 justify-center gap-2 rounded-full items-start bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-base"
+                  className="inline-flex min-h-12 justify-center gap-2 rounded-full items-center bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-base"
                 >
                   <HeroBookIcon className="h-5 w-5" />
-                  {h.ctaBook}
+                  {h.ctaBookNow}
                 </Link>
                 <a
                   href={whatsappHref()}
-                  className="inline-flex min-h-12 justify-center gap-2 rounded-full border border-border/80 items-start bg-card/90 px-8 py-3.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition hover:bg-muted/60 sm:text-base"
+                  className="inline-flex min-h-12 justify-center gap-2 rounded-full border border-border/80 items-center bg-card/90 px-8 py-3.5 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition hover:bg-muted/60 sm:text-base"
                   rel="noopener noreferrer"
                   target="_blank"
                 >

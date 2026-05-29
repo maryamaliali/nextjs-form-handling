@@ -166,6 +166,69 @@ export function HeroWhatsAppIcon({ className = "h-5 w-5" }: { className?: string
   );
 }
 
+/** Shield + check — DVSA-approved instruction highlight card. */
+export function HeroDetailApprovedIcon({
+  className = "h-6 w-6",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 2.75 5.5 5.5v5.25c0 4.1 2.75 6.85 6.5 8.25 3.75-1.4 6.5-4.15 6.5-8.25V5.5L12 2.75Z"
+        {...stroke}
+      />
+      <path d="m8.75 11.75 2 2 4.5-4.5" {...stroke} />
+      <path d="M12 2.75v3.5" {...stroke} strokeOpacity="0.45" />
+    </svg>
+  );
+}
+
+/** Trophy + star — first-time pass focus highlight card. */
+export function HeroDetailPassIcon({
+  className = "h-6 w-6",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M8 4h8v3.5c0 2.2-1.8 4-4 4s-4-1.8-4-4V4Z"
+        {...stroke}
+      />
+      <path d="M6 4H4.5a1.5 1.5 0 0 0 0 3H6M18 4h1.5a1.5 1.5 0 0 1 0 3H18" {...stroke} />
+      <path d="M12 11.5V14M9.5 20h5M10.5 14h3l.75 3.5h-4.5L10.5 14Z" {...stroke} />
+      <path
+        d="M12 6.5 12.45 7.65 13.7 7.85 12.85 8.75 13.1 10 12 9.4 10.9 10 11.15 8.75 10.3 7.85 11.55 7.65 12 6.5Z"
+        fill="currentColor"
+        stroke="none"
+      />
+    </svg>
+  );
+}
+
+/** Calendar + clock — flexible booking highlight card. */
+export function HeroDetailScheduleIcon({
+  className = "h-6 w-6",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" {...stroke} />
+      <path d="M3.5 10.5h17M8 3.5v3M16 3.5v3" {...stroke} />
+      <circle cx="12" cy="15.5" r="3.25" {...stroke} />
+      <path d="M12 13.75v2.75l1.5 1" {...stroke} />
+    </svg>
+  );
+}
+
+export const HERO_DETAIL_ICONS = [
+  HeroDetailApprovedIcon,
+  HeroDetailPassIcon,
+  HeroDetailScheduleIcon,
+] as const;
+
 const heroCardShell =
   "msa-hero-feature-card rounded-2xl border border-border/70 bg-card/80 p-4 shadow-lg shadow-foreground/5 backdrop-blur-md";
 

@@ -41,7 +41,22 @@ export const dictionaries = {
       intro:
         "Expert, patient instruction to get you test-ready. Learn at your pace — morning, evening, or weekends.",
       ctaBook: "Book a lesson",
+      ctaBookNow: "Book now",
       ctaWhatsApp: "WhatsApp us",
+      heroDetails: [
+        {
+          title: "DVSA-approved instruction",
+          body: "Patient teaching on local Nottingham routes, tailored to how you learn best.",
+        },
+        {
+          title: "First-time pass focus",
+          body: "Mock tests, manoeuvres, and real DVSA test-route practice so test day feels familiar.",
+        },
+        {
+          title: "Flexible booking",
+          body: "Morning, evening, or weekend slots with easy WhatsApp booking around your life.",
+        },
+      ],
       heroCards: {
         meter: "Progress meter",
         driving: "On the road",
@@ -852,7 +867,22 @@ export const dictionaries = {
       intro:
         "Cierpliwa, profesjonalna nauka przygotowująca do egzaminu. Tempo dopasowane do Ciebie — rano, wieczorem lub w weekendy.",
       ctaBook: "Umów jazdę",
+      ctaBookNow: "Zarezerwuj teraz",
       ctaWhatsApp: "Napisz na WhatsApp",
+      heroDetails: [
+        {
+          title: "Instruktor DVSA",
+          body: "Cierpliwa nauka na lokalnych trasach w Nottingham, dopasowana do Twojego tempa.",
+        },
+        {
+          title: "Nastawienie na pierwsze podejście",
+          body: "Jazdy próbne, manewry i prawdziwe trasy egzaminacyjne DVSA — egzamin bez stresu.",
+        },
+        {
+          title: "Elastyczne terminy",
+          body: "Lekcje rano, wieczorem lub w weekendy z łatwą rezerwacją przez WhatsApp.",
+        },
+      ],
       heroCards: {
         meter: "Wskaźnik postępu",
         driving: "Za kierownicą",

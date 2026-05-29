@@ -10,10 +10,10 @@
   --muted: oklch(0.96 0.01 200);
   --muted-foreground: oklch(0.45 0.02 260);
   --border: oklch(0.9 0.01 200);
-  /* #f59e0b — oklch keeps color-mix/opacity utilities in sync with Tailwind */
-  --primary: oklch(76.86% 0.1647 70.67);
+  /* #B4D13D — oklch keeps color-mix/opacity utilities in sync with Tailwind */
+  --primary: oklch(81.27% 0.1707 120.06);
   --primary-foreground: #ffffff;
-  --ring: oklch(76.86% 0.1647 70.67);
+  --ring: oklch(81.27% 0.1707 120.06);
   --destructive: oklch(0.55 0.2 25);
   --font-display:
     var(--font-bebas-neue), 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
@@ -30,9 +30,9 @@
   --muted: oklch(0.24 0.02 260);
   --muted-foreground: oklch(0.72 0.02 200);
   --border: oklch(0.3 0.02 260);
-  --primary: oklch(76.86% 0.1647 70.67);
+  --primary: oklch(81.27% 0.1707 120.06);
   --primary-foreground: #ffffff;
-  --ring: oklch(76.86% 0.1647 70.67);
+  --ring: oklch(81.27% 0.1707 120.06);
   --destructive: oklch(0.65 0.18 25);
 }
 
@@ -44,9 +44,9 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --color-primary: oklch(76.86% 0.1647 70.67);
+  --color-primary: oklch(81.27% 0.1707 120.06);
   --color-primary-foreground: #ffffff;
-  --color-ring: oklch(76.86% 0.1647 70.67);
+  --color-ring: oklch(81.27% 0.1707 120.06);
   --color-destructive: var(--destructive);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display:
