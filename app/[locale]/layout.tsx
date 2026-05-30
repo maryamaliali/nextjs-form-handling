@@ -7,6 +7,7 @@ import { OPEN_GRAPH_LOCALE } from "@/lib/constants";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { defaultLocale, isLocale, locales, type Locale } from "@/lib/i18n/config";
 import { defaultMetadata } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -21,15 +22,24 @@ export async function generateMetadata({
   const locale: Locale = isLocale(raw) ? raw : defaultLocale;
   const dict = await getDictionary(locale);
 
+  const canonical = `${siteUrl}/${locale}`;
+
   return {
     ...defaultMetadata,
-    title: dict.meta.siteName,
+    title: {
+      default: dict.meta.siteName,
+      template: `%s | ${dict.meta.siteName}`,
+    },
     description: dict.meta.defaultDescription,
+    alternates: {
+      canonical,
+    },
     openGraph: {
       ...defaultMetadata.openGraph,
       locale: OPEN_GRAPH_LOCALE[locale],
       title: dict.meta.siteName,
       description: dict.meta.defaultDescription,
+      url: canonical,
     },
   };
 }

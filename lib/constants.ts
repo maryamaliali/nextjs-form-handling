@@ -128,6 +128,12 @@ export const OPEN_GRAPH_LOCALE: Record<'en' | 'pl', string> = {
   pl: 'pl_PL',
 };
 
+/** BCP 47 tags for hreflang alternates (sitemap + page metadata). */
+export const HREFLANG_LOCALE: Record<'en' | 'pl', string> = {
+  en: 'en-GB',
+  pl: 'pl-PL',
+};
+
 /** Service tag attached to each pupil pass-photo. */
 export type SuccessStoryService =
   | 'fullPass'

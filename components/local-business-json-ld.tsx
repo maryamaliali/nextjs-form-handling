@@ -10,7 +10,8 @@ export function LocalBusinessJsonLd() {
     url: siteUrl,
     telephone: business.phoneTel,
     email: business.email,
-    image: `${siteUrl}/og.svg`,
+    image: [`${siteUrl}/logo.jpg`, `${siteUrl}/og.svg`],
+    logo: `${siteUrl}/logo.jpg`,
     address: {
       "@type": "PostalAddress",
       addressLocality: business.addressLocality,
