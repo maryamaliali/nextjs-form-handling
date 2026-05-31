@@ -44,9 +44,9 @@ export default async function RootLayout({
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: {
-    default: "MSA Driving School Nottingham",
-    template: "%s | MSA Driving School Nottingham",
+    default: "MSA Driving School Peterborough",
+    template: "%s | MSA Driving School Peterborough",
   },
   description:
-    "DVSA-approved driving lessons in Nottingham. Manual and automatic, intensive courses, test preparation, Pass Plus.",
+    "DVSA-approved driving lessons in Peterborough. Manual and automatic, intensive courses, test preparation, Pass Plus.",
 };

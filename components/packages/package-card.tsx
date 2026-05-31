@@ -1,4 +1,8 @@
 import Link from "next/link";
+import {
+  AutomaticTransmissionIcon,
+  ManualTransmissionIcon,
+} from "@/components/icons/transmission-icons";
 import { PackageCheckIcon } from "@/components/packages/package-check-icon";
 import type { Locale } from "@/lib/i18n/config";
 import { localeHref } from "@/lib/i18n/routing";
@@ -24,6 +28,8 @@ type PackageCardProps = {
   lessonsLabel: string;
   scheduleLabel: string;
   popularLabel: string;
+  manualLabel: string;
+  automaticLabel: string;
 };
 
 function parsePrice(price: string): { prefix: string; amount: string } {
@@ -40,6 +46,8 @@ export function PackageCard({
   lessonsLabel,
   scheduleLabel,
   popularLabel,
+  manualLabel,
+  automaticLabel,
 }: PackageCardProps) {
   const isPopular = Boolean(pkg.popular);
   const { prefix, amount } = parsePrice(pkg.price);
@@ -99,6 +107,21 @@ export function PackageCard({
             </span>
           </div>
         </div>
+
+        <div
+          className="flex flex-wrap items-center justify-center gap-2"
+          aria-label={`${manualLabel}, ${automaticLabel}`}
+        >
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm">
+            <ManualTransmissionIcon className="h-3.5 w-3.5 shrink-0 text-primary" />
+            {manualLabel}
+          </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-card px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm">
+            <AutomaticTransmissionIcon className="h-3.5 w-3.5 shrink-0 text-primary" />
+            {automaticLabel}
+          </span>
+        </div>
+
         <p className="text-center text-[11px] font-medium text-muted-foreground/90">{pkg.billing}</p>
 
         <div className={`flex flex-1 flex-col ${isPopular ? "gap-5" : "gap-4"}`}>
@@ -137,7 +160,7 @@ export function PackageCard({
             </div>
             <Link
               href={localeHref(locale, ROUTES.booking)}
-              className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              className="msa-package-cta inline-flex h-11 w-full items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-black shadow-sm hover:bg-primary/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
             >
               {chooseLabel}
             </Link>

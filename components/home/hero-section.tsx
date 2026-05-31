@@ -121,7 +121,7 @@ export function HeroSection({ locale, dict }: HeroSectionProps) {
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
                   href={localeHref(locale, ROUTES.booking)}
-                  className="inline-flex min-h-12 justify-center gap-2 rounded-full items-center bg-primary px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 sm:text-base"
+                  className="inline-flex min-h-12 justify-center gap-2 rounded-full items-center bg-primary px-8 py-3.5 text-sm font-semibold text-black shadow-md transition-colors hover:bg-primary/90 sm:text-base"
                 >
                   <HeroBookIcon className="h-5 w-5" />
                   {h.ctaBookNow}

@@ -13,7 +13,7 @@ export function BookingWhatsappCard({ title, body, cta }: BookingWhatsappCardPro
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
       <a
         href={whatsappHref()}
-        className="mt-4 inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+        className="mt-4 inline-flex min-h-11 items-center rounded-full bg-primary px-5 text-sm font-semibold text-black transition-colors hover:bg-primary/90"
         rel="noopener noreferrer"
         target="_blank"
       >

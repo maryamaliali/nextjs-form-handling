@@ -3,11 +3,11 @@ import type { Locale } from "./config";
 export const dictionaries = {
   en: {
     brand: "MSA Driving School",
-    city: "Nottingham",
+    city: "Peterborough",
     meta: {
-      siteName: "MSA Driving School Nottingham",
+      siteName: "MSA Driving School Peterborough",
       defaultDescription:
-        "DVSA-approved driving lessons in Nottingham. Manual and automatic tuition, intensive courses, test preparation, and Pass Plus. Book with confidence.",
+        "DVSA-approved driving lessons in Peterborough. Manual and automatic tuition, intensive courses, test preparation, and Pass Plus. Book with confidence.",
     },
     nav: {
       home: "Home",
@@ -19,7 +19,7 @@ export const dictionaries = {
       book: "Book a lesson",
     },
     footer: {
-      tagline: "Professional driving instruction helping learners in Nottingham pass with confidence.",
+      tagline: "Professional driving instruction helping learners in Peterborough pass with confidence.",
       quickLinks: "Quick links",
       contact: "Contact",
       socialTitle: "Social",
@@ -35,7 +35,7 @@ export const dictionaries = {
       },
     },
     home: {
-      badge: "DVSA approved — Nottingham",
+      badge: "DVSA approved — Peterborough",
       titleLine1: "Drive with",
       titleLine2: "confidence.",
       intro:
@@ -46,7 +46,7 @@ export const dictionaries = {
       heroDetails: [
         {
           title: "DVSA-approved instruction",
-          body: "Patient teaching on local Nottingham routes, tailored to how you learn best.",
+          body: "Patient teaching on local Peterborough routes, tailored to how you learn best.",
         },
         {
           title: "First-time pass focus",
@@ -79,7 +79,7 @@ export const dictionaries = {
             titleHighlight: "DVSA-approved",
             titleAfter: " instruction",
             body:
-              "Our mission is to build real confidence behind the wheel — patient teaching, local Nottingham routes, and lessons tailored to how you learn best.",
+              "Our mission is to build real confidence behind the wheel — patient teaching, local Peterborough routes, and lessons tailored to how you learn best.",
           },
           {
             titleBefore: "Test-ready training for ",
@@ -134,11 +134,11 @@ export const dictionaries = {
       stats: {
         title: "Results that speak for themselves",
         subtitle:
-          "Trusted instruction across Nottingham — from first lesson to test day.",
+          "Trusted instruction across Peterborough — from first lesson to test day.",
         totalPassed: {
           label: "Total passed",
           description:
-            "Learners who have passed their driving test with our instruction across Nottingham and the surrounding area.",
+            "Learners who have passed their driving test with our instruction across Peterborough and the surrounding area.",
         },
         highlights: {
           pass: {
@@ -149,7 +149,7 @@ export const dictionaries = {
           years: {
             label: "Years of experience",
             description:
-              "Over a decade of DVSA-approved tuition tailored to Nottingham roads and local test routes.",
+              "Over a decade of DVSA-approved tuition tailored to Peterborough roads and local test routes.",
           },
           rating: {
             label: "Average rating",
@@ -174,7 +174,7 @@ export const dictionaries = {
         },
         testPrep: {
           title: "Test preparation",
-          body: "Mock tests and targeted training on routes and manoeuvres used at Nottingham DVSA test centres.",
+          body: "Mock tests and targeted training on routes and manoeuvres used at Peterborough DVSA test centres.",
         },
         passPlus: {
           title: "Pass Plus",
@@ -223,7 +223,7 @@ export const dictionaries = {
           tag: "Intensive course",
           initials: "PR",
           quote:
-            "Did an intensive course and passed within 3 weeks. Could not have asked for a better experience. Highly recommended for Nottingham learners.",
+            "Did an intensive course and passed within 3 weeks. Could not have asked for a better experience. Highly recommended for Peterborough learners.",
           name: "Priya R.",
         },
         {
@@ -279,7 +279,7 @@ export const dictionaries = {
           tag: "Roundabout mastery",
           initials: "AS",
           quote:
-            "Used to freeze at busy roundabouts. Step-by-step coaching on Nottingham's worst ones and now I just drive through them.",
+            "Used to freeze at busy roundabouts. Step-by-step coaching on Peterborough's worst ones and now I just drive through them.",
           name: "Aiden S.",
         },
         {
@@ -295,7 +295,7 @@ export const dictionaries = {
         title: "From first lesson to test-ready — without the stress spiral.",
         name: "Alex T.",
         initials: "AT",
-        tagline: "Intensive manual course · Nottingham",
+        tagline: "Intensive manual course · Peterborough",
         body: "Alex started as a complete beginner with tight deadlines for work. We built a structured weekly plan, added focused mock tests on realistic routes, and used short debriefs after every lesson so progress stayed visible. The result: a confident drive on test day — not just a pass.",
         statLabel: "Test result",
         statValue: "Pass — 2 minors",
@@ -332,7 +332,7 @@ export const dictionaries = {
           },
           {
             title: "500+ pupils passed",
-            body: "Years of Nottingham-focused instruction across manual and automatic tuition.",
+            body: "Years of Peterborough-focused instruction across manual and automatic tuition.",
           },
           {
             title: "10+ years experience",
@@ -356,11 +356,13 @@ export const dictionaries = {
         benefitsTitle: "What's included",
         lessonsLabel: "Lessons",
         scheduleLabel: "Schedule",
+        transmissionManual: "Manual",
+        transmissionAutomatic: "Automatic",
         items: [
           {
             name: "Pay as you go",
             description: "Single lessons booked when you need them — no block commitment.",
-            price: "£35",
+            price: "£40",
             priceUnit: "/hour",
             billing: "Single 1-hour lessons",
             highlightLessons: "1 hr",
@@ -377,13 +379,13 @@ export const dictionaries = {
           {
             name: "10-hour block",
             description: "Structured bundle with progress tracking and a free mock test.",
-            price: "£320",
+            price: "£370",
             priceUnit: "/10 hours",
-            billing: "10 hours for the price of 9",
+            billing: "£370 for 10 hours",
             highlightLessons: "10 hrs",
             highlightSchedule: "Structured",
             features: [
-              "10 hours for the price of 9",
+              "£370 for 10 hours",
               "Structured lesson plan",
               "Progress tracked each session",
               "Free mock test included",
@@ -406,6 +408,7 @@ export const dictionaries = {
               "Theory support included",
               "Mock test included",
               "Ideal if you have a test date",
+              "Manual or automatic",
             ],
             popular: false,
           },
@@ -413,9 +416,9 @@ export const dictionaries = {
       },
       map: {
         title: "Locations & coverage",
-        subtitle: "Serving Nottingham and surrounding areas — pickup points agreed when you book.",
-        note: "Map shows Nottingham, UK — lesson pickup is arranged directly with your instructor.",
-        iframeTitle: "Nottingham map",
+        subtitle: "Serving Peterborough and surrounding areas — pickup points agreed when you book.",
+        note: "Map shows Peterborough, UK — lesson pickup is arranged directly with your instructor.",
+        iframeTitle: "Peterborough map",
       },
       finalCtaTitle: "Ready to start driving?",
       finalCtaBody: "Book your first lesson today. Spaces fill up fast — secure yours now.",
@@ -453,7 +456,7 @@ export const dictionaries = {
               "Most pupils book 1.5-hour sessions. Shorter or longer slots can be discussed based on your progress and concentration.",
           },
           {
-            question: "Can you help with the Nottingham test routes?",
+            question: "Can you help with the Peterborough test routes?",
             answer:
               "Absolutely. Test preparation includes mock tests and practice on routes and manoeuvres used at local DVSA centres.",
           },
@@ -483,8 +486,8 @@ export const dictionaries = {
         rows: [
           {
             feature: "Price",
-            starter: "£35/hour",
-            testReady: "£320",
+            starter: "£40/hour",
+            testReady: "£370",
             intensive: "£450",
           },
           {
@@ -568,7 +571,7 @@ export const dictionaries = {
           {
             question: "Are the prices on this page final?",
             answer:
-              "Prices are indicative and confirmed when you book. We offer pay as you go at £35 per hour, a 10-hour block at £320 (10 hours for the price of 9), and an intensive full course at £450. Your final quote may vary slightly by vehicle type and availability.",
+              "Prices are indicative and confirmed when you book. We offer pay as you go at £40 per hour, a 10-hour block at £370, and an intensive full course at £450. Your final quote may vary slightly by vehicle type and availability.",
           },
           {
             question: "Which option should I choose?",
@@ -595,7 +598,7 @@ export const dictionaries = {
     },
     aboutPage: {
       title: "About MSA Driving School",
-      subtitle: "Nottingham-based instruction with a pupil-first approach.",
+      subtitle: "Peterborough-based instruction with a pupil-first approach.",
       ownerHeading: "Your instructor",
       instructor: {
         name: "MSA Instructor",
@@ -606,8 +609,8 @@ export const dictionaries = {
       },
       achievementsHeading: "Milestones",
       successHeading: "Success story",
-      p1: "MSA Driving School Nottingham exists to make learning to drive straightforward, calm, and effective. Lessons are planned around your pace — not a one-size-fits-all syllabus rushed to a deadline.",
-      p2: "Whether you prefer little-and-often practice or an intensive course, you will get honest feedback, realistic mock tests, and routes that reflect real DVSA conditions in Nottingham.",
+      p1: "MSA Driving School Peterborough exists to make learning to drive straightforward, calm, and effective. Lessons are planned around your pace — not a one-size-fits-all syllabus rushed to a deadline.",
+      p2: "Whether you prefer little-and-often practice or an intensive course, you will get honest feedback, realistic mock tests, and routes that reflect real DVSA conditions in Peterborough.",
       listTitle: "What we believe",
       beliefs: [
         "Confidence comes from clarity — we explain the why, not just the how.",
@@ -631,7 +634,7 @@ export const dictionaries = {
           {
             question: "Which areas do you cover?",
             answer:
-              "We serve Nottingham and surrounding areas. Pickup points are agreed when you book.",
+              "We serve Peterborough and surrounding areas. Pickup points are agreed when you book.",
           },
           {
             question: "How soon can I start?",
@@ -704,7 +707,7 @@ export const dictionaries = {
       whatsappCta: "Open WhatsApp",
       sidebarTitle: "Contact details",
       locationLabel: "Area",
-      locationText: "Nottingham & surrounding areas",
+      locationText: "Peterborough & surrounding areas",
       successTitle: "Thank you for your booking request",
       successMessage:
         "We received your request and will confirm your preferred slot within 24 hours.",
@@ -806,7 +809,7 @@ export const dictionaries = {
           {
             question: "Where do lessons start?",
             answer:
-              "Pickup is arranged in Nottingham when you book. See the map below for our coverage area.",
+              "Pickup is arranged in Peterborough when you book. See the map below for our coverage area.",
           },
         ],
       },
@@ -820,7 +823,7 @@ export const dictionaries = {
     },
     common: {
       manualAuto: "Manual & automatic",
-      allAreas: "All areas of Nottingham",
+      allAreas: "All areas of Peterborough",
       readMore: "Read more",
       learnMore: "Learn more",
       readAbout: "Read our story",
@@ -828,11 +831,11 @@ export const dictionaries = {
   },
   pl: {
     brand: "Szkoła jazdy MSA",
-    city: "Nottingham",
+    city: "Peterborough",
     meta: {
-      siteName: "Szkoła jazdy MSA Nottingham",
+      siteName: "Szkoła jazdy MSA Peterborough",
       defaultDescription:
-        "Zatwierdzone przez DVSA lekcje jazdy w Nottingham. Kursy na manual i automat, kursy intensywne, przygotowanie do egzaminu i Pass Plus.",
+        "Zatwierdzone przez DVSA lekcje jazdy w Peterborough. Kursy na manual i automat, kursy intensywne, przygotowanie do egzaminu i Pass Plus.",
     },
     nav: {
       home: "Strona główna",
@@ -845,7 +848,7 @@ export const dictionaries = {
     },
     footer: {
       tagline:
-        "Profesjonalna nauka jazdy, która pomaga kursantom w Nottingham zdać egzamin z pewnością siebie.",
+        "Profesjonalna nauka jazdy, która pomaga kursantom w Peterborough zdać egzamin z pewnością siebie.",
       quickLinks: "Na skróty",
       contact: "Kontakt",
       socialTitle: "Social media",
@@ -861,7 +864,7 @@ export const dictionaries = {
       },
     },
     home: {
-      badge: "Zatwierdzone przez DVSA — Nottingham",
+      badge: "Zatwierdzone przez DVSA — Peterborough",
       titleLine1: "Jedź z",
       titleLine2: "pewnością.",
       intro:
@@ -872,7 +875,7 @@ export const dictionaries = {
       heroDetails: [
         {
           title: "Instruktor DVSA",
-          body: "Cierpliwa nauka na lokalnych trasach w Nottingham, dopasowana do Twojego tempa.",
+          body: "Cierpliwa nauka na lokalnych trasach w Peterborough, dopasowana do Twojego tempa.",
         },
         {
           title: "Nastawienie na pierwsze podejście",
@@ -906,7 +909,7 @@ export const dictionaries = {
             titleHighlight: "instruktorem DVSA",
             titleAfter: "",
             body:
-              "Budujemy realną pewność za kierownicą — cierpliwe prowadzenie, lokalne trasy w Nottingham i lekcje dopasowane do Twojego tempa.",
+              "Budujemy realną pewność za kierownicą — cierpliwe prowadzenie, lokalne trasy w Peterborough i lekcje dopasowane do Twojego tempa.",
           },
           {
             titleBefore: "Przygotowanie do egzaminu pod ",
@@ -961,11 +964,11 @@ export const dictionaries = {
       stats: {
         title: "Wyniki, które mówią same za siebie",
         subtitle:
-          "Zaufana nauka w Nottingham — od pierwszej jazdy po egzamin.",
+          "Zaufana nauka w Peterborough — od pierwszej jazdy po egzamin.",
         totalPassed: {
           label: "Łącznie zdanych",
           description:
-            "Kursanci, którzy zdali egzamin na prawo jazdy pod naszą opieką w Nottingham i okolicach.",
+            "Kursanci, którzy zdali egzamin na prawo jazdy pod naszą opieką w Peterborough i okolicach.",
         },
         highlights: {
           pass: {
@@ -976,7 +979,7 @@ export const dictionaries = {
           years: {
             label: "Lat doświadczenia",
             description:
-              "Ponad dekadę nauki z instruktorem zatwierdzonym przez DVSA, dopasowaną do dróg i tras egzaminacyjnych w Nottingham.",
+              "Ponad dekadę nauki z instruktorem zatwierdzonym przez DVSA, dopasowaną do dróg i tras egzaminacyjnych w Peterborough.",
           },
           rating: {
             label: "Średnia ocena",
@@ -1001,7 +1004,7 @@ export const dictionaries = {
         },
         testPrep: {
           title: "Przygotowanie do egzaminu",
-          body: "Jazdy próbne i trening na trasach i manewrach z ośrodków egzaminacyjnych DVSA w Nottingham.",
+          body: "Jazdy próbne i trening na trasach i manewrach z ośrodków egzaminacyjnych DVSA w Peterborough.",
         },
         passPlus: {
           title: "Pass Plus",
@@ -1050,7 +1053,7 @@ export const dictionaries = {
           tag: "Kurs intensywny",
           initials: "PR",
           quote:
-            "Kurs intensywny i zdanie w 3 tygodnie. Nie mogłabym prosić o lepsze doświadczenie. Polecam każdemu w Nottingham.",
+            "Kurs intensywny i zdanie w 3 tygodnie. Nie mogłabym prosić o lepsze doświadczenie. Polecam każdemu w Peterborough.",
           name: "Priya R.",
         },
         {
@@ -1106,7 +1109,7 @@ export const dictionaries = {
           tag: "Mistrzostwo rond",
           initials: "AS",
           quote:
-            "Zamierałem na ruchliwych rondach. Krok po kroku w najtrudniejszych miejscach Nottingham — dziś po prostu przez nie przejeżdżam.",
+            "Zamierałem na ruchliwych rondach. Krok po kroku w najtrudniejszych miejscach Peterborough — dziś po prostu przez nie przejeżdżam.",
           name: "Aiden S.",
         },
         {
@@ -1122,7 +1125,7 @@ export const dictionaries = {
         title: "Od pierwszej jazdy do gotowości na egzamin — bez spirali stresu.",
         name: "Alex T.",
         initials: "AT",
-        tagline: "Intensywny kurs na manual · Nottingham",
+        tagline: "Intensywny kurs na manual · Peterborough",
         body: "Alex zaczynał od zera i miał napięty harmonogram pracy. Ułożyliśmy tygodniowy plan, dodaliśmy skupione jazdy próbne na realistycznych trasach i krótkie podsumowania po każdej lekcji, by postęp był widoczny. Efekt: pewna jazda w dniu egzaminu — nie tylko zdany test.",
         statLabel: "Wynik egzaminu",
         statValue: "Zdanie — 2 drobne błędy",
@@ -1159,7 +1162,7 @@ export const dictionaries = {
           },
           {
             title: "500+ zdanych kursantów",
-            body: "Lata nauki w Nottingham na manual i automat.",
+            body: "Lata nauki w Peterborough na manual i automat.",
           },
           {
             title: "10+ lat doświadczenia",
@@ -1183,11 +1186,13 @@ export const dictionaries = {
         benefitsTitle: "Co obejmuje pakiet",
         lessonsLabel: "Lekcje",
         scheduleLabel: "Harmonogram",
+        transmissionManual: "Manual",
+        transmissionAutomatic: "Automat",
         items: [
           {
             name: "Płatność za jazdę",
             description: "Pojedyncze lekcje bez zobowiązania do pakietu.",
-            price: "£35",
+            price: "£40",
             priceUnit: "/godzina",
             billing: "Pojedyncze lekcje 1 godzina",
             highlightLessons: "1 godz.",
@@ -1204,13 +1209,13 @@ export const dictionaries = {
           {
             name: "Pakiet 10 godzin",
             description: "Uporządkowany plan z jazdą próbną w cenie.",
-            price: "£320",
+            price: "£370",
             priceUnit: "/10 godzin",
-            billing: "10 godzin w cenie 9",
+            billing: "£370 za 10 godzin",
             highlightLessons: "10 godz.",
             highlightSchedule: "Plan",
             features: [
-              "10 godzin w cenie 9",
+              "£370 za 10 godzin",
               "Uporządkowany plan lekcji",
               "Postęp śledzony co jazdę",
               "Darmowa jazda próbna",
@@ -1233,6 +1238,7 @@ export const dictionaries = {
               "Wsparcie teoretyczne",
               "Jazda próbna w cenie",
               "Idealny przy znanej dacie egzaminu",
+              "Manual lub automat",
             ],
             popular: false,
           },
@@ -1240,9 +1246,9 @@ export const dictionaries = {
       },
       map: {
         title: "Lokalizacje i zasięg",
-        subtitle: "Nottingham i okolice — miejsce odbioru ustalamy przy rezerwacji.",
-        note: "Mapa pokazuje Nottingham, UK — szczegóły odbioru omawiasz bezpośrednio z instruktorem.",
-        iframeTitle: "Mapa Nottingham",
+        subtitle: "Peterborough i okolice — miejsce odbioru ustalamy przy rezerwacji.",
+        note: "Mapa pokazuje Peterborough, UK — szczegóły odbioru omawiasz bezpośrednio z instruktorem.",
+        iframeTitle: "Mapa Peterborough",
       },
       finalCtaTitle: "Gotowy, by zacząć?",
       finalCtaBody: "Umów pierwszą jazdę już dziś. Miejsca znikają szybko — zarezerwuj swój termin.",
@@ -1280,7 +1286,7 @@ export const dictionaries = {
               "Większość kursantów wybiera 1,5 godziny. Krótsze lub dłuższe jazdy omawiamy indywidualnie.",
           },
           {
-            question: "Czy pomagacie w trasach egzaminacyjnych w Nottingham?",
+            question: "Czy pomagacie w trasach egzaminacyjnych w Peterborough?",
             answer:
               "Tak. Przygotowanie obejmuje jazdy próbne i trening na trasach i manewrach z lokalnych ośrodków DVSA.",
           },
@@ -1311,8 +1317,8 @@ export const dictionaries = {
         rows: [
           {
             feature: "Cena",
-            starter: "£35/godz.",
-            testReady: "£320",
+            starter: "£40/godz.",
+            testReady: "£370",
             intensive: "£450",
           },
           {
@@ -1397,7 +1403,7 @@ export const dictionaries = {
           {
             question: "Czy ceny na tej stronie są ostateczne?",
             answer:
-              "To ceny orientacyjne — potwierdzamy je przy rezerwacji. Oferujemy płatność za jazdę (£35/godz.), pakiet 10 godzin (£320 — 10 godzin w cenie 9) oraz kurs intensywny (£450). Wycena może się nieznacznie różnić w zależności od auta i dostępności.",
+              "To ceny orientacyjne — potwierdzamy je przy rezerwacji. Oferujemy płatność za jazdę (£40/godz.), pakiet 10 godzin (£370) oraz kurs intensywny (£450). Wycena może się nieznacznie różnić w zależności od auta i dostępności.",
           },
           {
             question: "Którą opcję wybrać?",
@@ -1424,7 +1430,7 @@ export const dictionaries = {
     },
     aboutPage: {
       title: "O szkole jazdy MSA",
-      subtitle: "Nauka w Nottingham z naciskiem na kursanta.",
+      subtitle: "Nauka w Peterborough z naciskiem na kursanta.",
       ownerHeading: "Twój instruktor",
       instructor: {
         name: "Instruktor MSA",
@@ -1435,8 +1441,8 @@ export const dictionaries = {
       },
       achievementsHeading: "Kamienie milowe",
       successHeading: "Historia sukcesu",
-      p1: "MSA Driving School Nottingham ma sprawić, by nauka jazdy była spokojna, przejrzysta i skuteczna. Plan lekcji uwzględnia Twoje tempo — bez sztampowego programu na siłę.",
-      p2: "Niezależnie, czy wolisz krótsze jazdy regularnie, czy kurs intensywny, dostaniesz szczery feedback, realistyczne próby i trasy zbliżone do warunków DVSA w Nottingham.",
+      p1: "MSA Driving School Peterborough ma sprawić, by nauka jazdy była spokojna, przejrzysta i skuteczna. Plan lekcji uwzględnia Twoje tempo — bez sztampowego programu na siłę.",
+      p2: "Niezależnie, czy wolisz krótsze jazdy regularnie, czy kurs intensywny, dostaniesz szczery feedback, realistyczne próby i trasy zbliżone do warunków DVSA w Peterborough.",
       listTitle: "Nasze zasady",
       beliefs: [
         "Pewność wynika ze zrozumienia — tłumaczymy dlaczego, nie tylko jak.",
@@ -1460,7 +1466,7 @@ export const dictionaries = {
           {
             question: "Jaki obszar obejmujecie?",
             answer:
-              "Nottingham i okolice. Miejsce odbioru ustalamy przy rezerwacji.",
+              "Peterborough i okolice. Miejsce odbioru ustalamy przy rezerwacji.",
           },
           {
             question: "Kiedy mogę zacząć?",
@@ -1534,7 +1540,7 @@ export const dictionaries = {
       whatsappCta: "Otwórz WhatsApp",
       sidebarTitle: "Dane kontaktowe",
       locationLabel: "Obszar",
-      locationText: "Nottingham i okolice",
+      locationText: "Peterborough i okolice",
       successTitle: "Dziękujemy za zgłoszenie rezerwacji",
       successMessage:
         "Otrzymaliśmy zgłoszenie i potwierdzimy preferowany termin w ciągu 24 godzin.",
@@ -1637,7 +1643,7 @@ export const dictionaries = {
           {
             question: "Skąd zaczynają się lekcje?",
             answer:
-              "Odbiór w Nottingham — ustalamy przy rezerwacji. Mapę zasięgu zobaczysz poniżej.",
+              "Odbiór w Peterborough — ustalamy przy rezerwacji. Mapę zasięgu zobaczysz poniżej.",
           },
         ],
       },
@@ -1651,7 +1657,7 @@ export const dictionaries = {
     },
     common: {
       manualAuto: "Manual i automat",
-      allAreas: "Całe Nottingham",
+      allAreas: "Całe Peterborough",
       readMore: "Czytaj więcej",
       learnMore: "Dowiedz się więcej",
       readAbout: "Poznaj naszą historię",

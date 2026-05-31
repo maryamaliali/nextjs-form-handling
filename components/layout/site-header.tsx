@@ -1,20 +1,14 @@
-import Link from "next/link";
-import type { Dictionary } from "@/lib/i18n/dictionaries";
-import type { Locale } from "@/lib/i18n/config";
-import {
-  langSwitchAriaLabel,
-  themeToggleLabels,
-} from "@/lib/i18n/ui-labels";
-import {
-  buildHeaderNavLinks,
-  localeBasePath,
-} from "@/lib/i18n/routing";
-import { LangSwitch } from "@/components/lang-switch";
-import { ROUTES } from "@/lib/constants";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { BrandMark } from "@/components/brand-mark";
-import { MobileNav } from "@/components/layout/site-mobile-nav";
-import { SiteHeaderNav } from "@/components/layout/site-header-nav";
+import Link from 'next/link';
+import type { Dictionary } from '@/lib/i18n/dictionaries';
+import type { Locale } from '@/lib/i18n/config';
+import { langSwitchAriaLabel, themeToggleLabels } from '@/lib/i18n/ui-labels';
+import { buildHeaderNavLinks, localeBasePath } from '@/lib/i18n/routing';
+import { LangSwitch } from '@/components/lang-switch';
+import { ROUTES } from '@/lib/constants';
+import { ThemeToggle } from '@/components/theme-toggle';
+import { BrandMark } from '@/components/brand-mark';
+import { MobileNav } from '@/components/layout/site-mobile-nav';
+import { SiteHeaderNav } from '@/components/layout/site-header-nav';
 
 type SiteHeaderProps = {
   locale: Locale;
@@ -46,13 +40,14 @@ export function SiteHeader({ locale, dict }: SiteHeaderProps) {
         <SiteHeaderNav locale={locale} links={links} />
 
         <div className="flex items-center justify-end gap-1.5 sm:gap-2">
-          <ThemeToggle labels={themeToggleLabels(locale)} />
           <Link
             href={localeBasePath(locale) + ROUTES.booking}
-            className="hidden min-h-9 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 md:inline-flex"
+            className="inline-flex min-h-9 shrink-0 items-center justify-center rounded-full bg-primary px-3 text-xs font-semibold text-black shadow-sm transition-colors hover:bg-primary/90 sm:px-4 sm:text-sm"
           >
-            {dict.nav.book}
+            <span className="md:hidden">{dict.nav.booking}</span>
+            <span className="hidden md:inline">{dict.nav.book}</span>
           </Link>
+          <ThemeToggle labels={themeToggleLabels(locale)} />
           <MobileNav locale={locale} dict={dict} links={links} />
         </div>
       </div>

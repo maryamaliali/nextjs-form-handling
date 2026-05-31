@@ -89,7 +89,7 @@ export function SiteFooter({ locale, dict }: SiteFooterProps) {
                 </p>
                 <Link
                   href={localeHref(locale, ROUTES.booking)}
-                  className="group mt-4 inline-flex min-h-10 items-center  gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                  className="group mt-4 inline-flex min-h-10 items-center  gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-primary/90"
                 > 
                   <HeroBookIcon className="h-5 w-5" />
 

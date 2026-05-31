@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: business.name,
     short_name: "MSA Driving",
     description:
-      "DVSA-approved driving lessons in Nottingham. Manual and automatic tuition, intensive courses, and test preparation.",
+      "DVSA-approved driving lessons in Peterborough. Manual and automatic tuition, intensive courses, and test preparation.",
     start_url: "/",
     display: "standalone",
     background_color: "#0a0a0a",

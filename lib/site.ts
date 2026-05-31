@@ -3,11 +3,11 @@ export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://msadrivingschoolnotts.com";
 
 export const business = {
-  name: "MSA Driving School Nottingham",
+  name: "MSA Driving School Peterborough",
   phoneDisplay: "07926 254 262",
   phoneTel: "+447926254262",
   email: "MSA_DRIVINGSCHOOLNOTTINGHAM@HOTMAIL.COM",
-  addressLocality: "Nottingham",
+  addressLocality: "Peterborough",
   addressCountry: "GB",
   /** WhatsApp click-to-chat uses international digits only */
   whatsappDigits: "447926254262",
@@ -34,6 +34,6 @@ export function hasConfiguredSocialLinks(): boolean {
   return Object.values(socialLinks).some((u) => Boolean(u?.trim()));
 }
 
-/** Google Maps embed (no API key) — Nottingham city centre; adjust query if needed. */
+/** Google Maps embed (no API key) — Peterborough city centre; adjust query if needed. */
 export const mapEmbedSrc =
-  "https://maps.google.com/maps?q=Nottingham%2C%20UK&z=12&ie=UTF8&iwloc=&output=embed";
+  "https://maps.google.com/maps?q=Peterborough%2C%20UK&z=12&ie=UTF8&iwloc=&output=embed";

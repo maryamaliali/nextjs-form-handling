@@ -19,7 +19,7 @@ export function LocalBusinessJsonLd() {
     },
     areaServed: {
       "@type": "City",
-      name: "Nottingham",
+      name: "Peterborough",
     },
     priceRange: "$$",
     openingHoursSpecification: {

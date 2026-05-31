@@ -139,8 +139,8 @@ export function ScrollStorySection({ locale, content }: ScrollStorySectionProps)
                   href={localeHref(locale, ROUTES.booking)}
                   className="msa-scroll-story-cta"
                 >
-                  <span>{content.cta}</span>
-                  <span className="msa-scroll-story-cta-icon" aria-hidden>
+                  <span className="text-black">{content.cta}</span>
+                  <span className="msa-scroll-story-cta-icon text-black" aria-hidden>
                     <ArrowIcon />
                   </span>
                 </Link>

@@ -46,6 +46,8 @@ export function PackagesPreviewSection({
                 benefitsTitle={packages.benefitsTitle}
                 lessonsLabel={packages.lessonsLabel}
                 scheduleLabel={packages.scheduleLabel}
+                manualLabel={packages.transmissionManual}
+                automaticLabel={packages.transmissionAutomatic}
               />
             </SectionReveal>
           ))}

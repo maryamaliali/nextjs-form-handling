@@ -2,7 +2,7 @@
 
 Next.js site with **English** and **Polish** locales, **light/dark** theme, and SEO metadata (sitemap, robots, JSON-LD).
 
-The home page is **responsive** (mobile → tablet → desktop), includes **scroll-in section animations** (respects `prefers-reduced-motion`), an **auto-advancing testimonial carousel** (pause on hover/focus, swipe on touch, prev/next + dots), **success story**, **achievements**, **lesson packages**, a **Google Maps embed** for Nottingham, and **social icons** in the footer when env URLs are set.
+The home page is **responsive** (mobile → tablet → desktop), includes **scroll-in section animations** (respects `prefers-reduced-motion`), an **auto-advancing testimonial carousel** (pause on hover/focus, swipe on touch, prev/next + dots), **success story**, **achievements**, **lesson packages**, a **Google Maps embed** for Peterborough, and **social icons** in the footer when env URLs are set.
 
 ## Environment
 
