@@ -397,13 +397,13 @@ export const dictionaries = {
           {
             name: "Intensive course",
             description: "Fast-track to test-ready when you can commit to 1–2 weeks.",
-            price: "£450",
+            price: "£750",
             priceUnit: "full course",
-            billing: "20+ hours over 1–2 weeks",
-            highlightLessons: "20+ hrs",
+            billing: "£750 for 20 hours",
+            highlightLessons: "20 hrs",
             highlightSchedule: "1–2 weeks",
             features: [
-              "20+ hours over 1–2 weeks",
+              "£750 for 20 hours",
               "Fast-track to test-ready",
               "Theory support included",
               "Mock test included",
@@ -488,13 +488,13 @@ export const dictionaries = {
             feature: "Price",
             starter: "£40/hour",
             testReady: "£370",
-            intensive: "£450",
+            intensive: "£750",
           },
           {
             feature: "Total lesson time",
             starter: "1 hour per booking",
             testReady: "10 hours",
-            intensive: "20+ hours",
+            intensive: "20 hours",
           },
           {
             feature: "Typical duration",
@@ -571,7 +571,7 @@ export const dictionaries = {
           {
             question: "Are the prices on this page final?",
             answer:
-              "Prices are indicative and confirmed when you book. We offer pay as you go at £40 per hour, a 10-hour block at £370, and an intensive full course at £450. Your final quote may vary slightly by vehicle type and availability.",
+              "Prices are indicative and confirmed when you book. We offer pay as you go at £40 per hour, a 10-hour block at £370, and a 20-hour intensive course at £750. Your final quote may vary slightly by vehicle type and availability.",
           },
           {
             question: "Which option should I choose?",
@@ -1227,13 +1227,13 @@ export const dictionaries = {
           {
             name: "Kurs intensywny",
             description: "Szybka ścieżka do egzaminu w 1–2 tygodnie.",
-            price: "£450",
+            price: "£750",
             priceUnit: "cały kurs",
-            billing: "20+ godzin w 1–2 tygodnie",
-            highlightLessons: "20+ godz.",
+            billing: "£750 za 20 godzin",
+            highlightLessons: "20 godz.",
             highlightSchedule: "1–2 tygodnie",
             features: [
-              "20+ godzin w 1–2 tygodnie",
+              "£750 za 20 godzin",
               "Szybka droga do egzaminu",
               "Wsparcie teoretyczne",
               "Jazda próbna w cenie",
@@ -1319,13 +1319,13 @@ export const dictionaries = {
             feature: "Cena",
             starter: "£40/godz.",
             testReady: "£370",
-            intensive: "£450",
+            intensive: "£750",
           },
           {
             feature: "Łączny czas jazd",
             starter: "1 godzina / rezerwacja",
             testReady: "10 godzin",
-            intensive: "20+ godzin",
+            intensive: "20 godzin",
           },
           {
             feature: "Typowy czas trwania",
@@ -1403,7 +1403,7 @@ export const dictionaries = {
           {
             question: "Czy ceny na tej stronie są ostateczne?",
             answer:
-              "To ceny orientacyjne — potwierdzamy je przy rezerwacji. Oferujemy płatność za jazdę (£40/godz.), pakiet 10 godzin (£370) oraz kurs intensywny (£450). Wycena może się nieznacznie różnić w zależności od auta i dostępności.",
+              "To ceny orientacyjne — potwierdzamy je przy rezerwacji. Oferujemy płatność za jazdę (£40/godz.), pakiet 10 godzin (£370) oraz kurs intensywny 20 godzin (£750). Wycena może się nieznacznie różnić w zależności od auta i dostępności.",
           },
           {
             question: "Którą opcję wybrać?",

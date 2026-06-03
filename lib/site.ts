@@ -4,13 +4,13 @@ export const siteUrl =
 
 export const business = {
   name: "MSA Driving School Peterborough",
-  phoneDisplay: "07926 254 262",
-  phoneTel: "+447926254262",
-  email: "MSA_DRIVINGSCHOOLNOTTINGHAM@HOTMAIL.COM",
+  phoneDisplay: "07448 684 253",
+  phoneTel: "+447448684253",
+  email: "Sohail4kash@gmail.com",
   addressLocality: "Peterborough",
   addressCountry: "GB",
   /** WhatsApp click-to-chat uses international digits only */
-  whatsappDigits: "447926254262",
+  whatsappDigits: "447448684253",
 } as const;
 
 export function whatsappHref(message?: string) {
@@ -19,11 +19,17 @@ export function whatsappHref(message?: string) {
   return `${base}?text=${encodeURIComponent(message)}`;
 }
 
-/** Set in `.env` to show icons in the footer; leave unset to hide a network. */
+/** Override individual links via `.env`; defaults are the school's public profiles. */
 export const socialLinks = {
-  facebook: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK,
-  instagram: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM,
-  tiktok: process.env.NEXT_PUBLIC_SOCIAL_TIKTOK,
+  facebook:
+    process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK ??
+    "https://www.facebook.com/share/17rxddrz4E/",
+  instagram:
+    process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM ??
+    "https://www.instagram.com/msadrivingschool?igsh=ZWRvOWJ5dzRocXRr",
+  tiktok:
+    process.env.NEXT_PUBLIC_SOCIAL_TIKTOK ??
+    "https://www.tiktok.com/@msadrivingschool1",
   youtube: process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE,
   x: process.env.NEXT_PUBLIC_SOCIAL_X,
 } as const;

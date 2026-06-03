@@ -520,7 +520,7 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
-  box-shadow: 0 5px 10px color-mix(in oklch, var(black) 18%, transparent);
+  box-shadow: 0 5px 10px color-mix(in oklch, black 18%, transparent);
 }
 
 .msa-package-card .msa-package-corner-badge::after {
