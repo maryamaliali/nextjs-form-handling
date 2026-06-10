@@ -498,6 +498,20 @@ body {
   pointer-events: none;
 }
 
+@media (max-width: 639px) {
+  .msa-package-card .msa-package-corner-badge {
+    width: 120px;
+    height: 120px;
+    top: -6px;
+    left: -6px;
+  }
+
+  .msa-package-card .msa-package-corner-badge::before {
+    height: 34px;
+    font-size: 10px;
+  }
+}
+
 .msa-package-card .msa-package-corner-badge::before {
   content: attr(data-label);
   position: absolute;

@@ -39,21 +39,21 @@ export default async function PackagesPage({
   const page = dict.packagesPage;
   const packages = dict.home.packages;
   return (
-    <div className="border-b border-border bg-gradient-to-b from-muted/30 to-background">
-      <div className="msa-container py-24 sm:py-16 md:py-20">
+    <div className="min-w-0 overflow-x-clip border-b border-border bg-gradient-to-b from-muted/30 to-background">
+      <div className="msa-container py-16 sm:py-20 md:py-20">
         <PageHeader
           title={page.title}
           subtitle={page.subtitle}
           note={packages.disclaimer}
         />
 
-        <div className="mx-auto mt-12 grid max-w-site items-end gap-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3 lg:gap-10">
+        <div className="mx-auto mt-10 grid min-w-0 max-w-site items-end gap-6 sm:mt-12 sm:grid-cols-2 sm:gap-8 lg:mt-14 lg:grid-cols-3 lg:gap-10">
           {packages.items.map((pkg, index) => (
             <SectionReveal
               key={pkg.name}
               variant="up"
               delay={index * 90}
-              className={`flex h-full ${pkg.popular ? "overflow-visible lg:-mt-6" : ""}`}
+              className={`flex h-full min-w-0 ${pkg.popular ? "overflow-hidden sm:overflow-visible lg:-mt-6" : ""}`}
             >
               <PackageCard
                 locale={locale}

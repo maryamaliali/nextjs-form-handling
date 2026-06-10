@@ -58,8 +58,8 @@ export function PackageCard({
     <article
       className={`group msa-card-lift msa-package-card relative mx-auto flex h-full w-full max-w-[520px] flex-col rounded-2xl bg-gradient-to-b from-primary/15 to-card shadow-lg shadow-foreground/5 ${
         isPopular
-          ? "msa-package-card--featured min-h-[680px] overflow-visible ring-2 ring-primary/40 lg:min-h-[760px]"
-          : "min-h-[540px] overflow-hidden ring-1 ring-border/60"
+          ? "msa-package-card--featured overflow-hidden ring-2 ring-primary/40 sm:min-h-[620px] sm:overflow-visible lg:min-h-[760px]"
+          : "overflow-hidden ring-1 ring-border/60 sm:min-h-[480px]"
       }`}
     >
       {isPopular ? (

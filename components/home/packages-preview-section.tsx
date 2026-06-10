@@ -30,13 +30,13 @@ export function PackagesPreviewSection({
           <p className="mt-2 text-xs text-muted-foreground">{packages.disclaimer}</p>
         </SectionReveal>
 
-        <div className="mx-auto mt-10 grid max-w-site items-end gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        <div className="mx-auto mt-10 grid min-w-0 max-w-site items-end gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 lg:gap-10">
           {packages.items.map((pkg, index) => (
             <SectionReveal
               key={pkg.name}
               variant="up"
               delay={index * 90}
-              className={`flex h-full ${pkg.popular ? "overflow-visible lg:-mt-6" : ""}`}
+              className={`flex h-full min-w-0 ${pkg.popular ? "overflow-hidden sm:overflow-visible lg:-mt-6" : ""}`}
             >
               <PackageCard
                 locale={locale}
